@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+    text-decoration: none
+}
+.container {
+    margin: 2rem 40rem ;
+    padding: 0;
+  }
+  .signup-text {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .already-member {
+    text-align: center;
+    margin: 1rem;
+  }
+  .already-member  span{
+    color: #3c79a7;
+    font-weight: bold;
+    cursor: pointer;
+  }
+input, select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 0.01rem solid #ccc;
+    border-radius: 0.25rem;
+}
+
+.form-group label {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    font-weight: bold;
+}
+
+.btn-group {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn {
+    font-size: 1rem;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 3rem; 
+    cursor: pointer;
+}
+
+.submit-btn {
+    background-color: #007bff; /* Set background color for primary button */
+    color: #fff;
+}
+
+.reset-btn {
+    background-color: #dc3545; /* Set background color for danger button */
+    color: #fff; /* Set text color for danger button */
+}
