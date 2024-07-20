@@ -1,7 +1,3 @@
-@font-face {
-  font-family: Poppins; 
-  src: url(https://fonts.gstatic.com/s/poppins/v21/pxiGyp8kv8JHgFVrLPTufntAKPY.woff2) format('woff2');
-}
 
 * {
     margin: 0;
@@ -10,9 +6,8 @@
 }
 
 nav {
-    padding: 1.5rem;
+    margin: auto;
     position: fixed;
-    height: auto;
     width: 100%;
     display: flex;
     align-items: center;
@@ -21,10 +16,10 @@ nav {
     }  
    
    .logo{
+    margin-left: 1rem;
     color: black;
     font-size: 2rem;
     font-weight: 600;
-    float: inline-start;
     }
 
     .logo  span{
@@ -36,17 +31,18 @@ nav {
   .menu {
     list-style: none;
     display: flex;
-    margin: 0;
-    padding: 0;
+    align-items: center;
     }
 
+  .item {
+    margin: 1rem;
+  }
 
-  .item a {
-    padding: 0.25rem;
-    margin: 1.25rem;
-    font-size: 1.05rem;
+  .item a { 
+    font-size: 1rem;
     font-weight: 500;
     color: black;
+    pointer-events: fill;
     }
 
   .item a:hover {
@@ -54,13 +50,13 @@ nav {
     }
 
   .btn{
+    padding: 0.03rem 0.5rem;
+    margin-top: -0.5rem;
     border: 0.1rem solid #3685fb;
     background-color: white;
     color: black;
     border-radius: 3rem;
-    font-size: 1rem;
     font-weight: 500;
-    cursor: pointer;
     }
       
    .btn:hover{

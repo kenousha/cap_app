@@ -37,49 +37,12 @@ export const Navbar = () => {
     </div>
   </a>
   <ul className="menu">
-    <li className="item">
-      <a href="../Landing_Page/LandingPage.html">
-        Home
-      </a>
-    </li>
-    <li className="item">
-      <a
-        className="topmenu"
-        href="#"
-      >
-        Appointments
-      </a>
-    </li>
-    <li className="item">
-      <a
-        className="topmenu"
-        href="#"
-      >
-        Health Blog
-      </a>
-    </li>
-    <li className="item">
-      <a
-        className="topmenu"
-        href="#"
-      >
-        Reviews
-      </a>
-    </li>
-    <li className="item">
-      <a href="../Sign_Up/Sign_Up.html">
-        <button className="btn">
-          Sign Up
-        </button>
-      </a>
-    </li>
-    <li className="item">
-      <a href="../Login/Login.html">
-        <button className="btn">
-          Login
-        </button>
-      </a>
-    </li>
+    <li className="item"> <a href="../Landing_Page/LandingPage.html"> Home </a> </li>
+    <li className="item"> <a href="#"> Appointments </a></li>
+    <li className="item"> <a href="#"> Health Blog </a></li>
+    <li className="item"> <a href="#"> Reviews </a></li>
+    <li class="item"> <a href="../Sign_Up/Sign_Up.html"><button class="btn">Sign Up</button></a></li>
+    <li class="item"> <a href="../Login/Login.html"><button class="btn">Login</button></a></li>
   </ul>
 </nav>
   );
