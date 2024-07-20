@@ -1,5 +1,7 @@
-import React from "react";
-import "./Login.css";
+import React, { useState } from 'react';
+import './Login.css'
+import {Link} from "react-router-dom"
+import { API_URL } from '../../config';
 
 export const Login = () => {
   return (
@@ -8,7 +10,7 @@ export const Login = () => {
                 <h1>Login</h1>
             </div>
             <div class="new-member">Are you a new member?
-            <a href="../Sign_Up/Sign_Up.html"><span>Sign Up Here</span></a></div>
+            <Link to="/Sign_Up"><span>Sign Up Here</span></Link></div>
         <form>
             <div class="form-group">
                 <label for="Email">Email</label>
@@ -16,8 +18,9 @@ export const Login = () => {
             </div>
 
             <div class="form-group">
-                <label for="password">Password<span>Forgot Password?</span></label>
+                <label for="password">Password</label>
                 <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" aria-describedby="Password inbput box" required/>
+                <span>Forgot Password?</span>
             </div>
 
             <div class="btn-group">

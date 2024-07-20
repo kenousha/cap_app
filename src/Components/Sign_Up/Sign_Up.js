@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom"
 import "./Sign_Up.css";
 
 export const Sign_Up = () => {
@@ -8,7 +9,7 @@ export const Sign_Up = () => {
                 <h1>Sign Up</h1>
             </div>
             <div className="already-member">Already a member? 
-            <a href="../Login/Login.html"><span> Login</span></a>
+            <Link to="/Login"><span> Login</span></Link>
             </div>
         <form>
 

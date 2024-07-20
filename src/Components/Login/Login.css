@@ -43,7 +43,7 @@ input {
     font-weight: bold;
 }
 
-.form-group label span{
+.form-group span{
     font-weight: normal;
     color: #3c79a7;
     cursor: pointer;
@@ -56,6 +56,7 @@ input {
 }
 
 .btn {
+    margin: 1rem;
     font-size: 1rem;
     padding: 0.75rem;
     border: none;

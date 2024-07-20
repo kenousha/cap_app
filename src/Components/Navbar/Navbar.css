@@ -6,11 +6,11 @@
 }
 
 nav {
-    margin: auto;
+    margin: 0.5rem;
     position: fixed;
     width: 100%;
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: space-between;
     background-color: white;
     }  
@@ -42,14 +42,13 @@ nav {
     font-size: 1rem;
     font-weight: 500;
     color: black;
-    pointer-events: fill;
     }
 
   .item a:hover {
     color: #3685fb;
     }
 
-  .btn{
+  .btn1{
     padding: 0.03rem 0.5rem;
     margin-top: -0.5rem;
     border: 0.1rem solid #3685fb;
@@ -59,49 +58,23 @@ nav {
     font-weight: 500;
     }
       
-   .btn:hover{
+   .btn1:hover{
     background-color: #3685fb;
     color: white;
     }
 
+    .btn2{
+    padding: 0.03rem 0.5rem;
+    margin-top: -0.5rem;
+    border: 0.1rem solid #3685fb;
+    background-color: white;
+    color: black;
+    border-radius: 3rem;
+    font-weight: 500;
+    }
 
-      @media (max-width: 768px) {
-        .logo {
-          margin-right: auto;
-        }
-      
-        .menu {
-          display: none;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 0.5rem;
-        }
-      
-        .menu.active {
-          display: flex;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          width: 100%;
-          margin: auto;
-          background-color: #fff;
-          flex-direction: column;
-          align-items: center;
-          padding: 1rem 0;
-          border-radius: 0.5rem;
-          box-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.1);
-          z-index: 999;
-          animation: slideDown 0.5s ease-in-out;
-        }
-      }
-      /* Animation keyframes*/
-      @keyframes slideDown {
-          0% {
-              transform: translateY(-10px);
-              opacity: 0;
-          }
-          100% {
-              transform: translateY(0);
-              opacity: 1;
-          }
-      }
+    .btn2:hover{
+    background-color: #3685fb;
+    color: white;
+    }
+
