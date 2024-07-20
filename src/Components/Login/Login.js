@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="./Login.css">
-</head>
-<body>
-    <div class="container">
+import React from "react";
+import "./Login.css";
+
+export const Login = () => {
+  return (
+<div class="container">
             <div class="login-text">
                 <h1>Login</h1>
             </div>
@@ -31,5 +27,6 @@
             
         </form>
     </div>
-</body>
-</html>
+  );
+};
+export default Login;
