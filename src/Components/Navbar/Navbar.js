@@ -53,14 +53,14 @@ const Navbar = () => {
     </Link>
   </div>
 
-  <ul className="menu">
+  <ul className={click ? 'menu active' : 'menu'}>
     <li className="item"> <Link to="/LandingPage" > Home </Link> </li>
     <li className="item"> <Link to="/Appointments"> Appointments </Link></li>
     <li className="item"> <Link to="/Health">Health Blog </Link></li>
     <li className="item"> <Link to="/LandingPage">Reviews </Link></li>
     {isLoggedIn?(
          <>
-            <li className="link" onClick={handleDropdown}>
+            <li className="item" onClick={handleDropdown}>
               Welcome, {emailPrefix}!
             </li>
             <li className="link">
@@ -72,8 +72,8 @@ const Navbar = () => {
           </>
         ) : (
           <>
-    <li className="item"> <Link to="/Sign_Up"><button className="btn1">Sign Up</button></Link></li>
-    <li className="item"> <Link to="/Login"> <button className="btn1">Login</button></Link></li>
+    <li className="link"> <Link to="/Sign_Up"><button className="btn1">Sign Up</button></Link></li>
+    <li className="link"> <Link to="/Login"> <button className="btn1">Login</button></Link></li>
   </>
         )}
   </ul>

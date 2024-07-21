@@ -5,9 +5,11 @@
     text-decoration: none
 }
 .container {
-    margin: 2rem 40rem;
-    padding: 1rem;
-    position: fixed;
+    max-width: 900px; 
+    margin: 0 auto; 
+    padding: 40px; 
+    margin-top: 10%; 
+    overflow: hidden;
   }
   .signup-text {
     margin: 0.25rem;
