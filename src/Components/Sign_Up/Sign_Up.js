@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Sign_Up.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { API_URL } from '../../config';
-// Function component for Sign Up form
+
 const Sign_Up = () => {
     // State variables using useState hook
     const [name, setName] = useState('');
@@ -11,6 +11,7 @@ const Sign_Up = () => {
     const [password, setPassword] = useState('');
     const [showerr, setShowerr] = useState(''); // State to show error messages
     const navigate = useNavigate(); // Navigation hook from react-router
+
     // Function to handle form submission
     const register = async (e) => {
         e.preventDefault(); // Prevent default form submission
@@ -85,7 +86,7 @@ const Sign_Up = () => {
             </div> 
 
             <div className="form-group">
-                <label for="password">Password</label>
+                <label htmlFor="password">Password</label>
                 <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" name="password" id="password" required className="form-control" placeholder="Enter your password" aria-describedby="Password inbput box" />
                 {showerr && <div className="err" style={{ color: 'red' }}>{showerr}</div>}
             </div> 
