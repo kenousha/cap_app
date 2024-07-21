@@ -48,52 +48,24 @@ const Navbar = () => {
         }, []);
   return (
     <nav>
-      <div className="logo">
-        <Link to="/">
-        StayHealthy <i style={{color:'#2190FF'}} className="fa fa-user-md"></i></Link>
-        <span>.</span>
-      </div>
-      <div className="icon" onClick={handleClick}>
-        <i className={click ? "fa fa-times" : "fa fa-bars"}></i>
-      </div>
-      <ul className={click ? 'menu active' : 'menu'}>
-        <li className="item">
-          <Link to="/">Home</Link>
-        </li>
-        <li className="item">
-          <Link to="/search/doctors">Appointments</Link>
-        </li>
-        <li className="item">
-          <Link to="/healthblog">Health Blog</Link>
-        </li>
-        <li className="item">
-         <Link to="/reviews">Reviews</Link>
-        </li>
-        {isLoggedIn?(
-          <>
-            <li className="item">
-              <button className="btn2" onClick={handleLogout}>
-                Logout
-              </button>
-            </li>
-            
-          </>
-        ) : (
-          <>
-            <li className="item">
-              <Link to="/Sign_Up">
-                <button className="btn1">Sign Up</button>
-              </Link>
-            </li>
-            <li className="item">
-              <Link to="/Login">
-                <button className="btn2">Login</button>
-              </Link>
-            </li>
-          </>
-        )}
-      </ul>
-    </nav>
+    
+  <div className="logo">
+    <Link to="/">
+    StayHealthy 
+    <i style={{color:'#2190FF'}} className="fa fa-user-md"></i>
+    <span>.</span>
+    </Link>
+  </div>
+
+  <ul className="menu">
+    <li className="item"> <Link to="/LandingPage" > Home </Link> </li>
+    <li className="item"> <Link to="/Appointments"> Appointments </Link></li>
+    <li className="item"> <Link to="/Health">Health Blog </Link></li>
+    <li className="item"> <Link to="/LandingPage">Reviews </Link></li>
+    <li className="item"> <Link to="/Sign_Up"><button class="btn2">Sign Up</button></Link></li>
+    <li className="item"> <Link to="/Login"> <button className="btn1">Login</button></Link></li>
+  </ul>
+</nav>
   );
 };
 
