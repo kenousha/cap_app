@@ -1,26 +1,25 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from './Components/Navbar/Navbar';
-import Login from './Components/Login/Login';
-import Sign_Up from './Components/Sign_Up/Sign_Up';
-import InstantConsultation from './Components/InstantConsultation/InstantConsultation';
-import LandingPage from './Components/LandingPage/LandingPage';
+import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-     <BrowserRouter>
-          <Navbar/>
-            <Routes>
-                <Route path="/InstantConsultation" element={<InstantConsultation/>}/>
-                <Route path="/LandingPage" element={<LandingPage/>}/>
-                <Route path="/Login" element={<Login/>}/>
-                <Route path="/Sign_Up" element={<Sign_Up/>}/>
-            </Routes>
-        </BrowserRouter>
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
     </div>
   );
-};
+}
 
 export default App;
