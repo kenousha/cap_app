@@ -25,7 +25,7 @@ const SignUp = () => {
     const register = async (e) => {
         e.preventDefault(); 
         const emailPrefix = getEmailPrefix(email);
-         console.log('Registering with:', { name, email, password, phone });
+         console.log('Registering with:', { role, name, email, password, phone });
 
         const response = await fetch(`${API_URL}/api/auth/register`, {
             method: "POST",
@@ -62,8 +62,8 @@ const SignUp = () => {
             }
         }
     };
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const regexAlf = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s\-']+$/;
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+    const nameRegex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s\-']+$/;
     const handleRoleChange = (e) => {
         const value = e.target.value;
         setRole(value);
@@ -98,7 +98,7 @@ const SignUp = () => {
         const value = e.target.value;
         setName(value);
         
-        if (regexAlf.test(value)&& value.length >= 4) {
+        if (nameRegex.test(value)&& value.length >= 2) {
               setErrorName(''); 
             } else {
               setErrorName('Enter a valid name'); 
@@ -126,7 +126,7 @@ const SignUp = () => {
         <form method="POST" onSubmit={register}>
             <div className="form-group">
                 <label for="role">Role</label>
-                <select onChange={handleRoleChange} value={role} type="role" id="role" name="role">
+                <select onChange={handleRoleChange} value={role} type="role" id="role" required className="form-control" name="role">
                     <option value="" aria-describedby="Select your role">-Select your role-</option>
                     <option value="dr" aria-describedby="Doctor">Doctor</option>
                     <option value="patient" aria-describedby="patient">Patient</option>

@@ -54,9 +54,10 @@ const Login = () => {
             <div class="login-text">
                 <h1>Login</h1>
             </div>
-
-            <div class="new-member">Are you a new member?
-            <Link to="/Sign_Up"><span>Sign Up Here</span></Link></div>
+            <div className="new-member"> Are you a new member?</div> 
+                <Link to="/SignUp"><div className='new-member-span'>Sign Up</div> </Link>
+            
+            
         <form onSubmit={login}>
             <div class="form-group">
                 <label htmlFor="Email">Email</label>

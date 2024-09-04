@@ -54,16 +54,16 @@ const Navbar = () => {
   </div>
 
   <ul className="menu">
-    <li className="item"> <Link to="/LandingPage" > Home </Link> </li>
+    <li className="item"> <Link to="/" > Home </Link> </li>
     <li className="item"> <Link to="/Appointments"> Appointments </Link></li>
     <li className="item"> <Link to="/Health">Health Blog </Link></li>
-    <li className="item"> <Link to="/LandingPage">Reviews </Link></li>
+    <li className="item"> <Link to="/">Reviews </Link></li>
     {isLoggedIn?(
          <>
-            <li className="link" onClick={handleDropdown}>
+            <li className="welcome-user" onClick={handleDropdown}>
               Welcome, {emailPrefix}!
             </li>
-            <li className="link">
+            <li className="item">
               <button className="btn2" onClick={handleLogout}>
                 Logout
               </button>
@@ -73,7 +73,7 @@ const Navbar = () => {
         ) : (
           <>
     <li className="item"> <Link to="/SignUp"><button className="btn1">Sign Up</button></Link></li>
-    <li className="item"> <Link to="/Login"> <button className="btn1">Login</button></Link></li>
+    <li className="item"> <Link to="/Login"> <button className="btn2">Login</button></Link></li>
   </>
         )}
   </ul>
