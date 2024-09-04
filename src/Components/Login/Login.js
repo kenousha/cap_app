@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 // Apply CSS according to your design theme or the CSS provided in week 2 lab 2
 import { Link, useNavigate } from 'react-router-dom';
 import { API_URL } from '../../config';
+import './Login.css'
+
+
 const Login = () => {
   // State variables for email and password
   const [password, setPassword] = useState("");
@@ -54,20 +57,20 @@ const Login = () => {
             <div class="login-text">
                 <h1>Login</h1>
             </div>
-            <div className="new-member"> Are you a new member?</div> 
-                <Link to="/SignUp"><div className='new-member-span'>Sign Up</div> </Link>
-            
+            <div className="new-member"> Are you a new member?
+                <Link to="/SignUp"><span> Sign Up</span></Link>
+            </div> 
             
         <form onSubmit={login}>
             <div class="form-group">
                 <label htmlFor="Email">Email</label>
-                <input value={email} onChange={(e) => setEmail(e.target.value)} type="Email" name="Email" id="Email" class="form-control" placeholder="Enter your email" aria-describedby="Email input box" required/>
+                <input value={email} onChange={(e) => setEmail(e.target.value)} type="Email" name="Email" id="Email" required className="form-control" placeholder="Enter your email" aria-describedby="Email input box" />
             </div>
 
             <div class="form-group">
-                <label htmlFor="password">Password</label>
-                <input value={password} onChange={(e) => setPassword(e.target.value)}type="password" name="password" id="password" class="form-control" placeholder="Enter your password" aria-describedby="Password inbput box" required/>
-                <span>Forgot Password?</span>
+                <label htmlFor="password">Password</label><span>Forgot Password?</span>
+                <input value={password} onChange={(e) => setPassword(e.target.value)}type="password" name="password" id="password" required className="form-control" placeholder="Enter your password" aria-describedby="Password inbput box"/>
+                
             </div>
 
             <div class="btn-group">
