@@ -55,7 +55,8 @@ const Navbar = () => {
 
   <ul className="menu">
     <li className="item"> <Link to="/" > Home </Link> </li>
-    <li className="item"> <Link to="/Appointments"> Appointments </Link></li>
+    <li className="item"> <Link to="/instant-consultation"> Instant Consultation </Link></li>
+    <li className="item"> <Link to="/FindDoctorSearchIC"> Appointments </Link></li>
     <li className="item"> <Link to="/Health">Health Blog </Link></li>
     <li className="item"> <Link to="/">Reviews </Link></li>
     {isLoggedIn?(
