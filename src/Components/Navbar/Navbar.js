@@ -10,7 +10,6 @@ const Navbar = () => {
     const[email,setEmail]=useState("");
     const [showDropdown, setShowDropdown] = useState(false);
     const handleClick = () => setClick(!click);
-    const emailPrefix = sessionStorage.getItem('emailPrefix');
     
     const handleLogout = () => {
         sessionStorage.removeItem("auth-token");
@@ -27,7 +26,7 @@ const Navbar = () => {
             localStorage.removeItem(key);
           }
         }
-        setEmail('');
+        setEmail(email);
         window.location.reload();
     }
     const handleDropdown = () => {
@@ -38,7 +37,7 @@ const Navbar = () => {
 
       if (storedemail) {
             setIsLoggedIn(true);
-            setUsername(storedemail);
+            setUsername(storedemail.split('@')[0]);
           }
         }, []);
 
@@ -52,8 +51,10 @@ const Navbar = () => {
     <span>.</span>
     </Link>
   </div>
-
-  <ul className="menu">
+  <div className="nav__icon" onClick={handleClick}>
+        <i className={click ? "fa fa-times" : "fa fa-bars"}></i>
+      </div>
+  <ul className={click ? 'menu active' : 'menu'}>
     <li className="item"> <Link to="/" > Home </Link> </li>
     <li className="item"> <Link to="/instant-consultation"> Instant Consultation </Link></li>
     <li className="item"> <Link to="/FindDoctorSearchIC"> Appointments </Link></li>
@@ -62,7 +63,7 @@ const Navbar = () => {
     {isLoggedIn?(
          <>
             <li className="welcome-user" onClick={handleDropdown}>
-              Welcome, {emailPrefix}!
+              Welcome, {username}!
             </li>
             <li className="item">
               <button className="btn2" onClick={handleLogout}>

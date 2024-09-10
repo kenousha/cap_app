@@ -10,7 +10,7 @@ const SignUp = () => {
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(''); 
+    const [username, setUsername] = useState("");
     const [errorRole, setErrorRole] = useState(''); 
     const [errorName, setErrorName] = useState(''); 
     const [errorPhone, setErrorPhone] = useState(''); 
