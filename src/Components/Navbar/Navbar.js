@@ -58,8 +58,8 @@ const Navbar = () => {
     <li className="item"> <Link to="/" > Home </Link> </li>
     <li className="item"> <Link to="/instant-consultation"> Instant Consultation </Link></li>
     <li className="item"> <Link to="/FindDoctorSearch"> Appointments </Link></li>
-    <li className="item"> <Link to="/Health">Health Blog </Link></li>
-    <li className="item"> <Link to="/">Reviews </Link></li>
+    <li className="item"> <Link to="/HealthBlog">Health Blog </Link></li>
+    <li className="item"> <Link to="/Reviews">Reviews </Link></li>
     {isLoggedIn?(
          <>
             <li className="welcome-user" onClick={handleDropdown}>
