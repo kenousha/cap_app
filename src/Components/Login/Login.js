@@ -6,18 +6,16 @@ import './Login.css'
 
 
 const Login = () => {
-  // State variables for email and password
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState('');
-  // Get navigation function from react-router-dom
   const navigate = useNavigate();
-  // Check if user is already authenticated, then redirect to home page
+
   useEffect(() => {
     if (sessionStorage.getItem("auth-token")) {
       navigate("/");
     }
-  }, []);
-  // Function to handle login form submission
+  }, [navigate]);
+
   const login = async (e) => {
     e.preventDefault();
     // Send a POST request to the login API endpoint

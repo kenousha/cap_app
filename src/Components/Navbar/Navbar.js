@@ -18,7 +18,7 @@ const Navbar = () => {
         sessionStorage.removeItem("phone");
         localStorage.removeItem("doctorData");
         setIsLoggedIn(false);
-        setUsername("");
+        setUsername(false);
    
         for (let i = 0; i < localStorage.length; i++) {
           const key = localStorage.key(i);
@@ -57,7 +57,7 @@ const Navbar = () => {
   <ul className={click ? 'menu active' : 'menu'}>
     <li className="item"> <Link to="/" > Home </Link> </li>
     <li className="item"> <Link to="/instant-consultation"> Instant Consultation </Link></li>
-    <li className="item"> <Link to="/FindDoctorSearchIC"> Appointments </Link></li>
+    <li className="item"> <Link to="/FindDoctorSearch"> Appointments </Link></li>
     <li className="item"> <Link to="/Health">Health Blog </Link></li>
     <li className="item"> <Link to="/">Reviews </Link></li>
     {isLoggedIn?(

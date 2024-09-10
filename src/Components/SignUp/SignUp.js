@@ -10,21 +10,16 @@ const SignUp = () => {
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
-    const [username, setUsername] = useState("");
     const [errorRole, setErrorRole] = useState(''); 
     const [errorName, setErrorName] = useState(''); 
     const [errorPhone, setErrorPhone] = useState(''); 
     const [errorEmail, setErrorEmail] = useState(''); 
-    const [errorPassword, setErrorPassword] = useState(''); 
+    const [errorPassword, setErrorPassword] = useState('');
+    const [setError] = useState(''); 
     const navigate = useNavigate(); 
-
-    const getEmailPrefix = (email) => {
-        return email.split('@')[0];
-    };
   
     const register = async (e) => {
         e.preventDefault(); 
-        const emailPrefix = getEmailPrefix(email);
          console.log('Registering with:', { role, name, email, password, phone });
 
         const response = await fetch(`${API_URL}/api/auth/register`, {
@@ -34,7 +29,7 @@ const SignUp = () => {
             },
             body: JSON.stringify({
                 name: name,
-                email: email || emailPrefix,
+                email: email,
                 password: password,
                 phone: phone,
             }),
@@ -48,7 +43,6 @@ const SignUp = () => {
             sessionStorage.setItem("name", name);
             sessionStorage.setItem("phone", phone);
             sessionStorage.setItem("email", email);
-            sessionStorage.setItem("emailPrefix", emailPrefix); 
             
             navigate("/");
             window.location.reload(); 
@@ -64,6 +58,7 @@ const SignUp = () => {
     };
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     const nameRegex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s\-']+$/;
+
     const handleRoleChange = (e) => {
         const value = e.target.value;
         setRole(value);
