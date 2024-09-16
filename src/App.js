@@ -5,7 +5,8 @@ import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
 import LandingPage from './Components/LandingPage/LandingPage';
 import InstantConsultation from './Components/InstantConsultation/InstantConsultation';
-import AppointmentFormIC from './Components/InstantConsultation/AppointmentFormIC/AppointmentFormIC';
+import FindDoctorSearch from './Components/FindDoctorSearch/FindDoctorSearch';
+
 import './App.css';
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
                 <Route path="/" element={<LandingPage/>}/>
                 <Route path="/Login" element={<Login/>}/>
                 <Route path="/SignUp" element={<SignUp/>}/>
-                <Route path="/instant-consultation" element={<InstantConsultation />} />                <Route path="/AppointmentFormIC" element={<AppointmentFormIC />} />
+                <Route path="/instant-consultation" element={<InstantConsultation />} />
+                <Route path="/FindDoctorSearch" element={<FindDoctorSearch/>}/>
             </Routes>
         </BrowserRouter>
     </div>
