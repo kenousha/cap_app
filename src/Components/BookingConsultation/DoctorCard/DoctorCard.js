@@ -1,42 +1,22 @@
 import React from 'react';
 import './DoctorCard.css';
-import svg from './svg.svg'
-import svg1 from './Dr. Jiao Yang.svg'
-import svg2 from './Dr. Denis Raj.svg'
-import svg3 from './Dr. Lyn Christie.svg'
-import svg4 from './Dr. Elizabeth Clark.svg'
-import svg5 from './Dr. Jessica White.svg'
-import svg6 from './Dr. Alan Dalkin.svg'
-import svg7 from './Dr. Richard Pearson,.svg'
-import svg8 from './Dr. Eugene J. Turner.svg'
+import svg from './svg.svg'; import svg1 from './svg1.svg'; import svg2 from './svg2.svg';
+import svg3 from './svg3.svg'; import svg4 from './svg4.svg'; import svg5 from './svg5.svg';
+import svg6 from './svg6.svg'; import svg7 from './svg7.svg'; import svg8 from './svg8.svg'
 
 
 const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
 
     const getDoctorImage = (name) => {
         switch (name) {
-          case 'Dr. Jiao Yang':
-            return svg1;
-          case 'Dr. Denis Raj':
-            return svg2;
-          case 'Dr. Lyn Christie':
-            return svg3;
-          case 'Dr. Rachel Parker':
-            return svg3;
-          case 'Dr. Elizabeth Clark':
-            return svg4;
-          case 'Dr. Laura Taylor':
-            return svg4;
-          case 'Dr. Jessica White':
-            return svg5;
-          case 'Dr. Emily Clark':
-            return svg5;
-          case 'Dr. Alan Dalkin':
-            return svg6;
-          case 'Dr. Richard Pearson,':
-            return svg7;
-          case 'Dr. Eugene J. Turner':
-            return svg8;
+          case 'Dr. Jiao Yang': return svg1;    case 'Dr. Michael Smith': return svg1;
+          case 'Dr. Denis Raj': return svg2;    case 'Dr. Mark D. Okusa': return svg2;
+          case 'Dr. Lyn Christie': return svg3;     case 'Dr. Rachel Parker': return svg3;
+          case 'Dr. Elizabeth Clark': return svg4;      case 'Dr. Laura Taylor': return svg4;
+          case 'Dr. Jessica White': return svg5;     case 'Dr. Emily Clark': return svg5;
+          case 'Dr. Alan Dalkin': return svg6;      case 'Dr. Richard Pearson,': return svg6;
+          case 'Dr. Eugene J. Turner': return svg8;     case 'Dr. Kevin Miller': return svg8;
+          case 'Dr. Stephny Grosh': return svg7;
           default:
             return svg;  // Default image if name is not found
         }
