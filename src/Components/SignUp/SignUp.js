@@ -28,6 +28,7 @@ const SignUp = () => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
+                role: role,
                 name: name,
                 email: email,
                 password: password,
@@ -40,6 +41,7 @@ const SignUp = () => {
         if (json.authtoken) {
        
             sessionStorage.setItem("auth-token", json.authtoken);
+            sessionStorage.setItem("role", role);            
             sessionStorage.setItem("name", name);
             sessionStorage.setItem("phone", phone);
             sessionStorage.setItem("email", email);

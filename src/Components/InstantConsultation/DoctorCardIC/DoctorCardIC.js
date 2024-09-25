@@ -5,7 +5,9 @@ import './DoctorCardIC.css';
 import AppointmentFormIC from '../AppointmentFormIC/AppointmentFormIC'
 import { v4 as uuidv4 } from 'uuid';
 import profile from './profile.svg';
-
+import svg from './svg.svg'; import svg1 from './1svg.svg'; import svg2 from './2svg.svg';
+import svg3 from './3svg.svg'; import svg4 from './4svg.svg'; import svg5 from './5svg.svg';
+import svg6 from './6svg.svg'; import svg7 from './7svg.svg'; import svg8 from './8svg.svg';
 
 const DoctorCardIC = ({ name, speciality, experience, ratings, profilePic }) => {
   const [showModal, setShowModal] = useState(false);
@@ -29,14 +31,29 @@ const DoctorCardIC = ({ name, speciality, experience, ratings, profilePic }) => 
     setAppointments(updatedAppointments);
     setShowModal(false);
   };
+const getDoctorImage = (name) => {
+        switch (name) {
+          case 'Dr. Jiao Yang': return svg1;    case 'Dr. Michael Smith': return svg1;
+          case 'Dr. Denis Raj': return svg2;    case 'Dr. Mark D. Okusa': return svg2;
+          case 'Dr. Lyn Christie': return svg3;     case 'Dr. Rachel Parker': return svg3;
+          case 'Dr. Elizabeth Clark': return svg4;      case 'Dr. Laura Taylor': return svg4;
+          case 'Dr. Jessica White': return svg5;     case 'Dr. Emily Clark': return svg5;
+          case 'Dr. Alan Dalkin': return svg6;      case 'Dr. Richard Pearson,': return svg6;
+          case 'Dr. Eugene J. Turner': return svg8;     case 'Dr. Kevin Miller': return svg8;
+          case 'Dr. Stephny Grosh': return svg7;
+          default:
+            return svg;
+        }
+  };
 
   return (
     <div className="doctor-card-container">
       <div className="doctor-card-details-container">
         <div className="doctor-card-profile-image-container">
-        <img src={profile} alt="" style={{height:"10rem", width:"10rem", margin:"0px"}}/>        </div>
+        <img src={getDoctorImage(name)} alt="" style={{height:"10rem", width:"10rem", margin:"0px"}}/>        
+        </div>
         <div className="doctor-card-details">
-          <div className="doctor-card-detail-profile">{profile}</div>   
+          <div className="doctor-card-detail-profile">{profilePic}</div>   
           <div className="doctor-card-detail-name">{name}</div>
           <div className="doctor-card-detail-speciality">{speciality}</div>
           <div className="doctor-card-detail-experience">{experience} years experience</div>
@@ -73,9 +90,10 @@ const DoctorCardIC = ({ name, speciality, experience, ratings, profilePic }) => 
             <div className="doctorbg" style={{ height: '100vh', overflow: 'scroll' }}>
               <div>
                 <div className="doctor-card-profile-image-container">
-                <img src={profile} alt="" style={{height:"10rem", width:"10rem", margin:"0px"}}/>
+                <img src={getDoctorImage(name)} alt="" style={{height:"10rem", width:"10rem", margin:"0px"}}/>
                 </div>
                 <div className="doctor-card-details">
+                  <div className="doctor-card-detail-profile">{profilePic}</div>   
                   <div className="doctor-card-detail-name">{name}</div>
                   <div className="doctor-card-detail-speciality">{speciality}</div>
                   <div className="doctor-card-detail-experience">{experience} years experience</div>

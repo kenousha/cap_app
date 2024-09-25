@@ -6,7 +6,7 @@ import { useNavigate, Navigate } from 'react-router-dom';
 
 
 const initSpeciality = [
-    'Dentist', 'Gynecologist/obstetrician', 'General Physician', 'Dermatologist', 'Ear-nose-throat (ent) Specialist', 'Homeopath', 'Ayurveda'
+    'Dentist', 'Gynecologist/obstetrician', 'General Physician', 'Dermatologist', 'Ear-nose-throat (ent) Specialist', 'Homeopath', 'Bone'
 ]
 
 const FindDoctorSearch = () => {
@@ -23,7 +23,7 @@ const FindDoctorSearch = () => {
     return (
         <div className='finddoctor'>
             <center>
-                <h1>Find a doctor and Consult instantly</h1>
+                <h1>Find a doctor and book an appointment</h1>
                 <div><img src={doctor} alt="" style={{height:"30rem", width:"30rem", margin:"0px"}}/></div>                
                 <div className="home-search-container"  style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                     <div className="doctor-search-box">
