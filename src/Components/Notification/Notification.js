@@ -1,21 +1,32 @@
 // Following code has been commented with appropriate comments for your reference.
 import React, { useEffect, useState } from 'react';
 import Navbar from '../Navbar/Navbar';
+import './Notification.css'
 
 // Function component Notification to display user notifications
 const Notification = ({ children }) => {
   // State variables to manage user authentication, username, doctor data, and appointment data
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
-  const [doctorData, setDoctorData] = useState(null);
-  const [appointmentData, setAppointmentData] = useState(null);
+  const [doctorName, setdoctorName] = useState(null);
+  const [doctorSpeciality, setDoctorSpeciality] = useState(null);
+  const [date, setDate] = useState(null);
+  const [time, setTime] = useState(null);
+  const [phone, setPhone] = useState(null);
+  const [name, setName] = useState(null);
+
 
   // useEffect hook to perform side effects in the component
   useEffect(() => {
     // Retrieve stored username, doctor data, and appointment data from sessionStorage and localStorage
     const storedUsername = sessionStorage.getItem('email');
-    const storedDoctorData = JSON.parse(localStorage.getItem('doctorData'));
-    const storedAppointmentData = JSON.parse(localStorage.getItem(storedDoctorData?.name));
+    const storedDoctorName = localStorage.getItem('doctorName');
+    const storedDoctorSpeciality = localStorage.getItem('doctorSpeciality');
+    const storedDate = localStorage.getItem('date');
+    const storedTime = localStorage.getItem('time');
+    const storedPhone = localStorage.getItem('phone');
+    const storedName = localStorage.getItem('name');
+
 
     // Set isLoggedIn state to true and update username if storedUsername exists
     if (storedUsername) {
@@ -23,15 +34,30 @@ const Notification = ({ children }) => {
       setUsername(storedUsername);
     }
 
-    // Set doctorData state if storedDoctorData exists
-    if (storedDoctorData) {
-      setDoctorData(storedDoctorData);
+    if (storedDoctorName) {
+      setdoctorName(storedDoctorName);
     }
+    
+    if (storedDoctorSpeciality) {
+        setDoctorSpeciality(storedDoctorSpeciality);
+      }
+    
+      if (storedDate) {
+        setDate(storedDate);
+      }
+    
+      if (storedTime) {
+        setTime(storedTime);
+      }
 
-    // Set appointmentData state if storedAppointmentData exists
-    if (storedAppointmentData) {
-      setAppointmentData(storedAppointmentData);
-    }
+      if (storedPhone) {
+        setPhone(storedPhone);
+      }
+
+      if (storedName) {
+        setName(storedName);
+      }
+
   }, []); // Empty dependency array ensures useEffect runs only once after initial render
 
   // Return JSX elements to display Navbar, children components, and appointment details if user is logged in
@@ -42,17 +68,23 @@ const Notification = ({ children }) => {
       {/* Render children components */}
       {children}
       {/* Display appointment details if user is logged in and appointmentData is available */}
-      {isLoggedIn && appointmentData && (
+      {isLoggedIn && doctorName && (
         <>
-          <div className="appointment-card">
+          <div className="appointment-card-container">
             <div className="appointment-card__content">
               {/* Display title for appointment details */}
-              <h3 className="appointment-card__title">Appointment Details</h3>
-              <p className="appointment-card__message">
-                {/* Display doctor's name from doctorData */}
-                <strong>Doctor:</strong> {doctorData?.name}
-                <strong>username:</strong> {username}
-
+              <p className="p app-details">
+               <h3 className="appointment-card__title">Appointment Details</h3>
+                <strong>Doctor:</strong> {doctorName}<br></br>
+                <strong>Speciality:</strong> {doctorSpeciality}<br></br>
+                <strong>Appointment Date:</strong> {date}<br></br>
+                <strong>Time of Appointment:</strong> {time}<br></br>
+              </p>
+              <p className="p patient-details">
+               <h3 className="appointment-card__title">Patient Details</h3>
+                <strong>Username:</strong> {username.split('@')[0]}<br></br> 
+                <strong> Patient Name:</strong> {name}<br></br>
+                <strong>Phone Number:</strong> {phone}<br></br>
               </p>
             </div>
           </div>

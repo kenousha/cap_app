@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from './Components/Navbar/Navbar';
 import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
 import LandingPage from './Components/LandingPage/LandingPage';
@@ -17,7 +16,6 @@ function App() {
     <div className="App">
      <BrowserRouter>
             <Notification>
-                <Navbar/>
                 <Routes>
                     <Route path="/" element={<LandingPage/>}/>
                     <Route path="/Login" element={<Login/>}/>
