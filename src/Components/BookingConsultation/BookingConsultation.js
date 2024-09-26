@@ -50,10 +50,10 @@ const BookingConsultation = () => {
             .catch(err => console.log(err));
         };
         getDoctorsDetails();
-        //const authtoken = sessionStorage.getItem("auth-token");
-        //if (!authtoken) {
-           //  navigate("/Login");
-         //}
+        const authtoken = sessionStorage.getItem("auth-token");
+        if (!authtoken) {
+             navigate("/Login");
+         }
     }, [, searchParams])
 
     return (
