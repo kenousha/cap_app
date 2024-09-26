@@ -4,12 +4,38 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import FindDoctorSearchIC from './FindDoctorSearchIC/FindDoctorSearchIC';
 import DoctorCardIC from './DoctorCardIC/DoctorCardIC';
 
-const InstantConsultation = () => {
+function InstantConsultation () {
     const [searchParams] = useSearchParams();
     const [doctors, setDoctors] = useState([]);
     const [filteredDoctors, setFilteredDoctors] = useState([]);
     const [isSearched, setIsSearched] = useState(false);
+
+    const saveDoctorDataToLocalStorage = (data) => {
+        localStorage.setItem('doctorData', JSON.stringify(data));
+      };
     
+    const getDoctorsDetails = () => {
+        fetch('https://api.npoint.io/9a5543d36f1460da2f63')
+        .then(res => res.json())
+        .then(data => {
+            if (searchParams.get('speciality')) {
+                // window.reload()
+                const filtered = data.filter(doctor => doctor.speciality.toLowerCase() === searchParams.get('speciality').toLowerCase());
+
+                setFilteredDoctors(filtered);
+                
+                setIsSearched(true);
+                // window.reload()
+            } else {
+                setFilteredDoctors([]);
+                setIsSearched(false);
+            }
+            setDoctors(data);
+             // Save data to localStorage once fetched
+             saveDoctorDataToLocalStorage(data);
+        })
+        .catch(err => console.log(err));
+    }
     const handleSearch = (searchText) => {
 
         if (searchText === '') {
@@ -25,36 +51,17 @@ const InstantConsultation = () => {
                 
             setFilteredDoctors(filtered);
             setIsSearched(true);
-            window.location.reload()
+           
         }
     };
     const navigate = useNavigate();
     useEffect(() => {
-        const getDoctorsDetails = () => {
-            fetch('https://api.npoint.io/9a5543d36f1460da2f63')
-            .then(res => res.json())
-            .then(data => {
-                if (searchParams.get('speciality')) {
-                    const filtered = data.filter(doctor => doctor.speciality.toLowerCase() === searchParams.get('speciality').toLowerCase());
-    
-                    setFilteredDoctors(filtered);
-                    
-                    setIsSearched(true);
-                    window.reload()
-                } else {
-                    setFilteredDoctors([]);
-                    setIsSearched(false);
-                }
-                setDoctors(data);
-            })
-            .catch(err => console.log(err));
-        };
         getDoctorsDetails();
-        //const authtoken = sessionStorage.getItem("auth-token");
-        //if (!authtoken) {
-           //  navigate("/Login");
-         //}
-    }, [, searchParams])
+        const authtoken = sessionStorage.getItem("auth-token");
+        if (!authtoken) {
+            navigate("/Login");
+        }
+    }, [searchParams])
 
     return (
         <center>

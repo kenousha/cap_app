@@ -23,6 +23,7 @@
 .patient-details {
     text-align: left;
     padding: 10px;
-    margin: absolute.;    height: fit-content;
-    width: fstretch;    background-color: #dc3545;
+    margin: absolute;    
+    height: fit-content;
     color: #fff;
+}

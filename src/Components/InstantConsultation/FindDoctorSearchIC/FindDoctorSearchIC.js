@@ -14,12 +14,24 @@ const FindDoctorSearchIC = () => {
     const [searchDoctor, setSearchDoctor] = useState('');
     const [specialities, setSpecialities] = useState(initSpeciality);
     const navigate = useNavigate();
+
     const handleDoctorSelect = (speciality) => {
         setSearchDoctor(speciality);
         setDoctorResultHidden(true);
         navigate(`/instant-consultation?speciality=${speciality}`);
         window.location.reload();
-    }
+    };
+
+    const handleSearchInputChange = (text) => {
+        setSearchDoctor(text); 
+        setDoctorResultHidden(false);
+    };
+
+    const filteredSpecialities = specialities.filter(speciality =>
+        speciality.toLowerCase().includes(searchDoctor.toLowerCase())
+    );
+
+
     return (
         <div className='finddoctor'>
             <center>
@@ -27,17 +39,27 @@ const FindDoctorSearchIC = () => {
                 <div><img src={doctor} alt="" style={{height:"30rem", width:"30rem", margin:"0px"}}/></div>                
                 <div className="home-search-container"  style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                     <div className="doctor-search-box">
-                        <input type="text" className="search-doctor-input-box" placeholder="Search doctors, clinics, hospitals, etc." onFocus={() => setDoctorResultHidden(false)} onBlur={() => setDoctorResultHidden(true)} value={searchDoctor} onChange={(e) => setSearchDoctor(e.target.value)} /> 
-                        <div className="findiconimg"><img className='findIcon' src={search} alt=""/></div>
+                        
+                        <input type="text" className="search-doctor-input-box" placeholder="Search doctor by speciality." 
+                        onFocus={() => setDoctorResultHidden(false)} onBlur={() => setDoctorResultHidden(true)} 
+                        value={searchDoctor} onChange={(e) => handleSearchInputChange(e.target.value)} /> 
+                        
+                        
                         <div className="search-doctor-input-results" hidden={doctorResultHidden}>
                             {
-                                specialities.map(speciality => <div className="search-doctor-result-item" key={speciality} onMouseDown={() => handleDoctorSelect(speciality)}>
+                                filteredSpecialities.map(speciality => 
+                                <div className="search-doctor-result-item" key={speciality} onMouseDown={() => handleDoctorSelect(speciality)}>
                                     <span> <i style={{color:'#000000',fontSize:'20px'}} className="fa fa-user-md"></i></span>
                                     <span>{speciality}</span>
                                     <span>SPECIALITY</span>
                                 </div>)
                             }
                         </div>
+                        
+                        <div className="findiconimg">
+                            <img className='findIcon' src={search} alt=""/> 
+                        </div>
+
                     </div>
                 </div>
             </center>
