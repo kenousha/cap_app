@@ -4,16 +4,18 @@ const AppointmentFormIC = ({ doctorName, doctorSpeciality, onSubmit }) => {
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [date, setDate] = useState('');
-    const [time, setTime] = useState('');  
+    const [time, setTime] = useState('');
    
     const handleFormSubmit = async (e) => {
       e.preventDefault();
-      onSubmit({ name, phone, date, time });
+      onSubmit({ doctorName, doctorSpeciality, name, phone, date, time });
       console.log('Registering with:', { time, name, date, phone });
       localStorage.setItem("time", time);            
       localStorage.setItem("name", name);
       localStorage.setItem("phone", phone);
       localStorage.setItem("date", date);
+      localStorage.setItem("doctorName", doctorName);
+      localStorage.setItem("doctorSpeciality", doctorSpeciality);
     };
   
     return (

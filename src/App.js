@@ -6,6 +6,9 @@ import SignUp from './Components/SignUp/SignUp';
 import LandingPage from './Components/LandingPage/LandingPage';
 import InstantConsultation from './Components/InstantConsultation/InstantConsultation';
 import BookingConsultation from './Components/BookingConsultation/BookingConsultation';
+import Notification from './Components/Notification/Notification';
+
+
 
 import './App.css';
 
@@ -13,7 +16,8 @@ function App() {
   return (
     <div className="App">
      <BrowserRouter>
-              <Navbar/>
+            <Notification>
+                <Navbar/>
                 <Routes>
                     <Route path="/" element={<LandingPage/>}/>
                     <Route path="/Login" element={<Login/>}/>
@@ -21,6 +25,7 @@ function App() {
                     <Route path="/instant-consultation" element={<InstantConsultation />} />
                     <Route path="/BookingConsultation" element={<BookingConsultation/>}/>
                 </Routes>
+            </Notification>
         </BrowserRouter>
     </div>
   );

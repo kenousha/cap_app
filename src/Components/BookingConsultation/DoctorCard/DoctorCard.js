@@ -8,7 +8,7 @@ import 'reactjs-popup/dist/index.css';
 import AppointmentForm from '../AppointmentForm/AppointmentForm'
 import { v4 as uuidv4 } from 'uuid';
 
-const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
+const DoctorCard = ({ name, speciality, experience, ratings, profilePic, onSubmit }) => {
     const [showModal, setShowModal] = useState(false);
     const [appointments, setAppointments] = useState([]);
   
@@ -21,12 +21,15 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
         localStorage.removeItem("time");
         localStorage.removeItem("phone");
         localStorage.removeItem("date");
+        localStorage.removeItem("doctorName");
+        localStorage.removeItem("doctorSpeciality");
+
       const updatedAppointments = appointments.filter((appointment) => appointment.id !== appointmentId);
       setAppointments(updatedAppointments);
       
     };
   
-    const handleFormSubmit = (appointmentData) => {
+    const handleFormSubmit = async (appointmentData) => {
       const newAppointment = {
         id: uuidv4(),
         ...appointmentData,
