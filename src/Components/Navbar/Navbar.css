@@ -1,11 +1,10 @@
 
 nav {
     padding: 1.5rem;
-    position: fixed;
     position: sticky;
     top: 0%;
     left: 50%;
-    z-index: 1;
+    z-index: 10;
     width: 100%;
     display: flex;
     align-items: center;
@@ -93,7 +92,7 @@ nav {
     color: #3685fb;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1150px) {
     .logo {
         margin-right: auto;
     }

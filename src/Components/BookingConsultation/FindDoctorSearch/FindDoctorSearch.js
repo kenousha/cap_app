@@ -38,10 +38,11 @@ const FindDoctorSearch = () => {
         <div className='finddoctor'>
             <center>
                 <h1>Find a doctor and book an appointment</h1>
-                <div><img className='docimg'src={doctor} alt="" /></div>                
-                <div className="home-search-container"  style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+        <img className='docimg'src={doctor} alt="" />  
+                <div className="home-search-container">
+                         
                        
-                       {/* doctor-search-box as a div and not form to prevent the page reloading after search button is clicked */}
+                    {/* doctor-search-box as a div and not form to prevent the page reloading after search button is clicked */}
                     <div className="doctor-search-box">
                      
                        {/* input box filters through specialities as user is typing */}
