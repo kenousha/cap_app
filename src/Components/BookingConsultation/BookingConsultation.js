@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './BookingConsultation.css';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import FindDoctorSearchIC from './FindDoctorSearch/FindDoctorSearch';
+import FindDoctorSearch from './FindDoctorSearch/FindDoctorSearch';
 import DoctorCard from './DoctorCard/DoctorCard';
 
 
@@ -68,7 +68,7 @@ function BookingConsultation () {
     return (
         <center>
             <div  className="searchpage-container">
-            <FindDoctorSearchIC onSearch={handleSearch} />
+            <FindDoctorSearch onSearch={handleSearch} />
             <div className="search-results-container">
             {isSearched ? (
                 <center>

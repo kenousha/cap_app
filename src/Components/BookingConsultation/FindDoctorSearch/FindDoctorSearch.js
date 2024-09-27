@@ -20,18 +20,44 @@ const FindDoctorSearch = () => {
         navigate(`/BookingConsultation?speciality=${speciality}`);
         window.location.reload();
     }
+       const handleSearchInputChange = (text) => {
+        setSearchDoctor(text); 
+        setDoctorResultHidden(false);
+    };
+
+    const filteredSpecialities = specialities.filter(speciality =>
+        speciality.toLowerCase().includes(searchDoctor.toLowerCase())
+    );
+    
+    const handlesearch = () => {
+    if (filteredSpecialities.length > 0) {
+    handleSearchInputChange(filteredSpecialities[0]); // Set the first filtered result as the input value
+    }
+  };
     return (
         <div className='finddoctor'>
             <center>
                 <h1>Find a doctor and book an appointment</h1>
-                <div><img src={doctor} alt="" style={{height:"30rem", width:"30rem", margin:"0px"}}/></div>                
+                <div><img className='docimg'src={doctor} alt="" /></div>                
                 <div className="home-search-container"  style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+                       
+                       {/* doctor-search-box as a div and not form to prevent the page reloading after search button is clicked */}
                     <div className="doctor-search-box">
-                        <input type="text" className="search-doctor-input-box" placeholder="Search doctors, clinics, hospitals, etc." onFocus={() => setDoctorResultHidden(false)} onBlur={() => setDoctorResultHidden(true)} value={searchDoctor} onChange={(e) => setSearchDoctor(e.target.value)} /> 
-                        <div className="findiconimg"><img className='findIcon' src={search} alt=""/></div>
+                     
+                       {/* input box filters through specialities as user is typing */}
+                       <input type="text" className="search-doctor-input-box" placeholder="Search doctor by speciality." 
+                        onFocus={() => setDoctorResultHidden(true) } onBlur={() => setDoctorResultHidden(false)} 
+                        value={searchDoctor} onChange={(e) => handleSearchInputChange(e.target.value)} />
+                        
+                        {/* search button shows first filtered result in inputbox */} 
+                        <button className="findiconimg" onClick={handlesearch}><i class="fa fa-search"/></button>
+                        
+                        {/* hides results that dont match filter */} 
                         <div className="search-doctor-input-results" hidden={doctorResultHidden}>
-                            {
-                                specialities.map(speciality => <div className="search-doctor-result-item" key={speciality} onMouseDown={() => handleDoctorSelect(speciality)}>
+                            
+                            {/* output of filtered results */}
+                            {filteredSpecialities.map(speciality => 
+                                <div className="search-doctor-result-item" key={speciality} onMouseDown={() => handleDoctorSelect(speciality)}>
                                     <span> <i style={{color:'#000000',fontSize:'20px'}} className="fa fa-user-md"></i></span>
                                     <span>{speciality}</span>
                                     <span>SPECIALITY</span>

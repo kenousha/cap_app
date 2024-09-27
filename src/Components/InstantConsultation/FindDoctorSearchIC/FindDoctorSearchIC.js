@@ -1,8 +1,7 @@
-import search from './search.png';
 import doctor from './doc.svg';
 import React, { useState } from 'react';
 import './FindDoctorSearchIC.css';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { useNavigate, } from 'react-router-dom';
 
 
 const initSpeciality = [
@@ -12,7 +11,7 @@ const initSpeciality = [
 const FindDoctorSearchIC = () => {
     const [doctorResultHidden, setDoctorResultHidden] = useState(true);
     const [searchDoctor, setSearchDoctor] = useState('');
-    const [specialities, setSpecialities] = useState(initSpeciality);
+    const [specialities] = useState(initSpeciality);
     const navigate = useNavigate();
 
     const handleDoctorSelect = (speciality) => {
@@ -31,23 +30,34 @@ const FindDoctorSearchIC = () => {
         speciality.toLowerCase().includes(searchDoctor.toLowerCase())
     );
 
+    const handlesearch = () => {
+        if (filteredSpecialities.length > 0) {
+        handleSearchInputChange(filteredSpecialities[0]); // Set the first filtered result as the input value
+        }
+    };
 
     return (
         <div className='finddoctor'>
             <center>
                 <h1>Find a doctor and Consult instantly</h1>
-                <div><img src={doctor} alt="" style={{height:"30rem", width:"30rem", margin:"0px"}}/></div>                
+                <div><img className='docimg' src={doctor} alt="" /></div>                
                 <div className="home-search-container"  style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+                       
+                       {/* doctor-search-box as a div and not form to prevent the page reloading after search button is clicked */}
                     <div className="doctor-search-box">
+                     
+                       {/* input box filters through specialities as user is typing */}
+                       <input type="text" className="search-doctor-input-box" placeholder="Search doctor by speciality." 
+                        onFocus={() => setDoctorResultHidden(true) } onBlur={() => setDoctorResultHidden(false)} 
+                        value={searchDoctor} onChange={(e) => handleSearchInputChange(e.target.value)} />
                         
-                        <input type="text" className="search-doctor-input-box" placeholder="Search doctor by speciality." 
-                        onFocus={() => setDoctorResultHidden(false)} onBlur={() => setDoctorResultHidden(true)} 
-                        value={searchDoctor} onChange={(e) => handleSearchInputChange(e.target.value)} /> 
-                        
+                        {/* search button shows first filtered result in inputbox */} 
+                        <button className="findiconimg" onClick={handlesearch}><i class="fa fa-search"/></button>
                         
                         <div className="search-doctor-input-results" hidden={doctorResultHidden}>
-                            {
-                                filteredSpecialities.map(speciality => 
+                            
+                            {/* output of filtered results */} 
+                            {filteredSpecialities.map(speciality =>
                                 <div className="search-doctor-result-item" key={speciality} onMouseDown={() => handleDoctorSelect(speciality)}>
                                     <span> <i style={{color:'#000000',fontSize:'20px'}} className="fa fa-user-md"></i></span>
                                     <span>{speciality}</span>
@@ -55,11 +65,6 @@ const FindDoctorSearchIC = () => {
                                 </div>)
                             }
                         </div>
-                        
-                        <div className="findiconimg">
-                            <img className='findIcon' src={search} alt=""/> 
-                        </div>
-
                     </div>
                 </div>
             </center>
