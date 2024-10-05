@@ -56,7 +56,7 @@ const Navbar = () => {
       </div>
   <ul className={click ? 'menu active' : 'menu'}>
     <li className="item"> <Link to="/" > Home </Link> </li>
-    <li className="item"> <Link to="/instant-consultation"> Instant Consultation </Link></li>
+    <li className="item"> <Link to="/InstantConsultation"> Instant Consultation </Link></li>
     <li className="item"> <Link to="/BookingConsultation"> Appointments </Link></li>
     <li className="item"> <Link to="/HealthBlog">Health Blog </Link></li>
     <li className="item"> <Link to="/Reviews">Reviews </Link></li>
