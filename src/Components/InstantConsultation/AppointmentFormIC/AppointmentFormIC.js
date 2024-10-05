@@ -33,7 +33,7 @@ const AppointmentFormIC = ({ doctorName, doctorSpeciality, onSubmit, name, phone
           <input type="date" id="date" value={date} onChange={(e) => (date= e.target.value)} required/>
         </div>
         <div className="form-group">
-          <label htmlFor="role">Role</label>
+          <label htmlFor="time">Time</label>
                 <select type="time" id="time" value={time} onChange={(e) => (time= e.target.value)} required>
                     <option value="" aria-describedby="Select a time slot">-Select a time slot-</option>
                     <option value="10:00 AM" aria-describedby="10:00 AM">10:00AM</option>
