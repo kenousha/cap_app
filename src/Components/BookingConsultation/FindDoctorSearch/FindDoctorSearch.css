@@ -116,21 +116,3 @@
     border: #414146 solid 1px;
     padding: 0%;
 }
-
-@media (max-width: 1150px) {
-    .finddoctor{
-        align-items: center;
-        padding: 0%;
-    }
-    .home-search-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .doctor-search-box{
-        position: inherit;
-        align-items: center;
-        padding: 0%;
-    }
-}
-

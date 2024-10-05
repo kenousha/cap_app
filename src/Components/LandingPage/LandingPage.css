@@ -2,10 +2,12 @@
     margin: 0;
     font-family: "Poppins", sans-serif;
     box-sizing: border-box;
+    z-index: 15;
+
 }
 .hero-section {
-    height: 100vh;
-    padding-top: 15rem;
+    height: 0vh;
+    padding-top: 2rem;
     background-color: transparent;
     z-index: -1;
 }
@@ -136,8 +138,6 @@ li {
 
 /* Blob */
 
-
-/* Blobs */
 .flex-hero .blob-cont {
     justify-content: center;
     align-items: center;
@@ -148,7 +148,7 @@ li {
 
 .blob {
     border-radius: 100px;
-    filter: blur(60px);
+    filter: blur(80px);
 }
 
 .blue {
