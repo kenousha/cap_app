@@ -1,4 +1,3 @@
-import search from './search.png';
 import doctor from './doc.svg';
 import React, { useState } from 'react';
 import './FindDoctorSearch.css';
