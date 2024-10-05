@@ -1,7 +1,7 @@
 import doctor from './doc.svg';
 import React, { useState } from 'react';
 import './FindDoctorSearch.css';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const initSpeciality = [
@@ -11,7 +11,7 @@ const initSpeciality = [
 const FindDoctorSearch = () => {
     const [doctorResultHidden, setDoctorResultHidden] = useState(true);
     const [searchDoctor, setSearchDoctor] = useState('');
-    const [specialities, setSpecialities] = useState(initSpeciality);
+    const [specialities] = useState(initSpeciality);
     const navigate = useNavigate();
     const handleDoctorSelect = (speciality) => {
         setSearchDoctor(speciality);
@@ -50,7 +50,7 @@ const FindDoctorSearch = () => {
                         value={searchDoctor} onChange={(e) => handleSearchInputChange(e.target.value)} />
                         
                         {/* search button shows first filtered result in inputbox */} 
-                        <button className="findiconimg" onClick={handlesearch}><i class="fa fa-search"/></button>
+                        <button className="findiconimg" onClick={handlesearch}><i className="fa fa-search"/></button>
                         
                         {/* hides results that dont match filter */} 
                         <div className="search-doctor-input-results" hidden={doctorResultHidden}>

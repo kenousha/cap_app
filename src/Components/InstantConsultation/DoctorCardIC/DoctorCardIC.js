@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import './DoctorCardIC.css';
 import AppointmentFormIC from '../AppointmentFormIC/AppointmentFormIC'
 import { v4 as uuidv4 } from 'uuid';
-import profile from './profile.svg';
-import svg from './svg.svg'; import svg1 from './1svg.svg'; import svg2 from './2svg.svg';
-import svg3 from './3svg.svg'; import svg4 from './4svg.svg'; import svg5 from './5svg.svg';
-import svg6 from './6svg.svg'; import svg7 from './7svg.svg'; import svg8 from './8svg.svg';
+import svg from './/images/0.svg'; import svg1 from './/images/1.svg'; import svg2 from './/images/2.svg';
+import svg3 from './/images/3.svg'; import svg4 from './/images/4.svg'; import svg5 from './/images/5.svg';
+import svg6 from './/images/6.svg'; import svg7 from './/images/7.svg'; import svg8 from './/images/8.svg';
 
 const DoctorCardIC = ({ name, speciality, experience, ratings, profilePic }) => {
   const [showModal, setShowModal] = useState(false);
@@ -113,7 +112,7 @@ const getDoctorImage = (name) => {
                   ))}
                 </>
               ) : (
-                <AppointmentFormIC doctorName={name} doctorSpeciality={speciality} onSubmit={handleFormSubmit} />
+                <AppointmentFormIC doctorName={name} doctorSpeciality={speciality} onSubmit={handleFormSubmit} onClick={() => handleBooking(appointments.id)}/>
               )}
             </div>
           )}

@@ -17,7 +17,7 @@ const FindDoctorSearchIC = () => {
     const handleDoctorSelect = (speciality) => {
         setSearchDoctor(speciality);
         setDoctorResultHidden(true);
-        navigate(`/instant-consultation?speciality=${speciality}`);
+        navigate(`/InstantConsultation?speciality=${speciality}`);
         window.location.reload();
     };
 
@@ -52,7 +52,7 @@ const FindDoctorSearchIC = () => {
                         value={searchDoctor} onChange={(e) => handleSearchInputChange(e.target.value)} />
                         
                         {/* search button shows first filtered result in inputbox */} 
-                        <button className="findiconimg" onClick={handlesearch}><i class="fa fa-search"/></button>
+                        <button className="findiconimg" onClick={handlesearch}><i className="fa fa-search"/></button>
                         
                         <div className="search-doctor-input-results" hidden={doctorResultHidden}>
                             

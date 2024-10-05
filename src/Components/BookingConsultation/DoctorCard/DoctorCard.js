@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './DoctorCard.css';
-import svg from './svg.svg'; import svg1 from './svg1.svg'; import svg2 from './svg2.svg';
-import svg3 from './svg3.svg'; import svg4 from './svg4.svg'; import svg5 from './svg5.svg';
-import svg6 from './svg6.svg'; import svg7 from './svg7.svg'; import svg8 from './svg8.svg';
+import svg from './/images/0.svg'; import svg1 from './/images/1.svg'; import svg2 from './/images/2.svg';
+import svg3 from './/images/3.svg'; import svg4 from './/images/4.svg'; import svg5 from './/images/5.svg';
+import svg6 from './/images/6.svg'; import svg7 from './/images/7.svg'; import svg8 from './/images/8.svg';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import AppointmentForm from '../AppointmentForm/AppointmentForm'
@@ -17,12 +17,7 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, onSubmi
     };
   
     const handleCancel = (appointmentId) => {
-        localStorage.removeItem("name");
-        localStorage.removeItem("time");
-        localStorage.removeItem("phone");
-        localStorage.removeItem("date");
-        localStorage.removeItem("doctorName");
-        localStorage.removeItem("doctorSpeciality");
+        localStorage.removeItem('appointmentData');
 
       const updatedAppointments = appointments.filter((appointment) => appointment.id !== appointmentId);
       setAppointments(updatedAppointments);
@@ -111,7 +106,7 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, onSubmi
                   ))}
                 </>
               ) : (
-                <AppointmentForm doctorName={name} doctorSpeciality={speciality} onSubmit={handleFormSubmit} />
+                <AppointmentForm doctorName={name} doctorSpeciality={speciality} onSubmit={handleFormSubmit} onClick={() => handleBooking(appointments.id)}/>
               )}
             </div>
           )}
