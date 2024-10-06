@@ -6,6 +6,7 @@ import LandingPage from './Components/LandingPage/LandingPage';
 import InstantConsultation from './Components/InstantConsultation/InstantConsultation';
 import BookingConsultation from './Components/BookingConsultation/BookingConsultation';
 import Notification from './Components/Notification/Notification';
+import ReviewForm from './Components/ReviewForm/ReviewForm';
 
 
 
@@ -22,6 +23,7 @@ function App() {
                     <Route path="/SignUp" element={<SignUp/>}/>
                     <Route path="/InstantConsultation" element={<InstantConsultation />} />
                     <Route path="/BookingConsultation" element={<BookingConsultation/>}/>
+                    <Route path="/Reviews" element={<ReviewForm/>}/>
                 </Routes>
             </Notification>
         </BrowserRouter>
