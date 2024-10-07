@@ -60,3 +60,18 @@ td {
 .feedbackForm input {
 padding: 5px;
 }
+
+.starrating span:hover {
+    color: rgb(255, 232, 29);
+}
+.starrating span:nth-child(1):hover~span:nth-child()~span:nth-child()~span:nth-child(4) {
+    color: rgb(255, 232, 29);
+}
+
+.starrating span {
+    cursor: pointer;
+    color: grey;
+    font-size: 25px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+}

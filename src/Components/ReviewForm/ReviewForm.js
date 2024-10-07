@@ -90,6 +90,16 @@ function ReviewForm() {
                                             <label >Review:</label>
                                             <textarea id="review" name="review" value={formData.review} onChange={handleChange} />
                                             </div>
+                                            <div className='rating'>
+                                            <label >Rating:</label>
+                                            <div className='starrating'>
+                                            <span className="fa fa-star star1"></span>
+                                            <span className="fa fa-star star2"></span>
+                                            <span className="fa fa-star star3"></span>
+                                            <span className="fa fa-star star4"></span>
+                                            <span className="fa fa-star star5"></span>
+                                            </div>
+                                            </div>
                                             {/* Submit button for form submission */}
                                             <button type="submit">Submit</button>
                                         </form>
@@ -97,7 +107,12 @@ function ReviewForm() {
                                 </Popup>        
                             </td>
                                 <td>
-                                {submittedMessage}
+                                {submittedMessage && (
+        <div>
+          <h3>Submitted Message:</h3>
+          <p>{submittedMessage}</p>
+        </div>
+      )}
                                 </td>
                         </tr>
                     ))}
