@@ -30,7 +30,6 @@
 }
 
 .button {
-    background-color: #04AA6D;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -38,11 +37,6 @@
     cursor: pointer;
     margin-top: 1rem;
     margin-right: 1rem;
-}
-
-.button:hover,
-[type=submit]:hover {
-    background-color: #45a049;
 }
 
 .container {
