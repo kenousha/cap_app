@@ -7,7 +7,7 @@ const AppointmentFormIC = ({ doctorName, doctorSpeciality, onSubmit, name, phone
       e.preventDefault();
       onSubmit({ doctorName, doctorSpeciality, name, phone, date, time });
       console.log('Reserving with:', {  name, phone, date, time });
-      const appointmentData = {
+      const appointmentICData = {
         "name": name,
         "phone": phone,
         "date": date,
@@ -15,11 +15,11 @@ const AppointmentFormIC = ({ doctorName, doctorSpeciality, onSubmit, name, phone
         "doctorName": doctorName,
         "doctorSpeciality": doctorSpeciality,
       }
-      localStorage.setItem('appointmentData', JSON.stringify(appointmentData));
+      localStorage.setItem('appointmentICData', JSON.stringify(appointmentICData));
     };
   
     return (
-      <form onSubmit={handleFormSubmit} className="appointment-form">
+      <form onSubmit={handleFormSubmit} className="appointment-formIC">
         <div className="form-group">
           <label htmlFor="name">Name:</label>
           <input type="text" id="name" value={name} onChange={(e) => (name= e.target.value)} required/>

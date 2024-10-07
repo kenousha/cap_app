@@ -96,8 +96,8 @@
   text-align: center;
 }
 
-.modal-content h3 {
-  margin-top: 0;
+.h3 {
+  display: block;
 }
 
 .modal-content p {
@@ -114,14 +114,22 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-.doctorbg{
-  -webkit-scrollbar {
-    display: none;
+.doctorbgIC{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    padding:5px;
 }
 
-
+.bookedInfoIC{
+    display: block;
+    padding: 10px;
+    font-size: medium;
+    margin-bottom: 60px;
 
 }
+
 .modal-btn:hover {
   background-color: #0d8af5;
 }
@@ -140,14 +148,14 @@
 .cancel-appointment-btn:hover {
   background-color: #d63027;
 }
-.appointment-form {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
+.appointment-formIC {
+  width: 90%;
+  height: fit-content;
+  margin-top: 150px;
+  margin-bottom: 0px;
+  padding: 10px;
   background-color: #f5f5f5;
   border-radius: 8px;
-  /* height: auto;
-  overflow-y: auto; */
 }
 
 .form-group {

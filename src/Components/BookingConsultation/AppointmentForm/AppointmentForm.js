@@ -19,8 +19,7 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit, name, phone, 
     };
   
     return (
-    <div className='container'>
-      <form onSubmit={handleFormSubmit} className="appointment-form">
+      <form onSubmit={handleFormSubmit} className="appointment-formIC">
         <div className="form-group">
           <label htmlFor="name">Name:</label>
           <input type="text" id="name" value={name} onChange={(e) => (name= e.target.value)} required/>
@@ -43,7 +42,6 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit, name, phone, 
         </div>
         <button type="submit">Book Now</button>
       </form>
-      </div>
     );
   };
 

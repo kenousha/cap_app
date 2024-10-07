@@ -17,14 +17,15 @@ const DoctorCardIC = ({ name, speciality, experience, ratings, profilePic }) => 
   };
 
   const handleCancel = (appointmentId) => {
+    localStorage.removeItem('appointmentData');
     const updatedAppointments = appointments.filter((appointment) => appointment.id !== appointmentId);
     setAppointments(updatedAppointments);
   };
 
-  const handleFormSubmit = (appointmentData) => {
+  const handleFormSubmit = (appointmentICData) => {
     const newAppointment = {
       id: uuidv4(),
-      ...appointmentData,
+      ...appointmentICData,
     };
     const updatedAppointments = [...appointments, newAppointment];
     setAppointments(updatedAppointments);
@@ -70,7 +71,7 @@ const getDoctorImage = (name) => {
 
       <div className="doctor-card-options-container">
        <Popup
-          style={{ backgroundColor: '#FFFFFF' }}
+          style={{ backgroundColor: '#FFFFFF'}}
           trigger={
             <button className={`book-appointment-btn ${appointments.length > 0 ? 'cancel-appointment' : ''}`}>
               {appointments.length > 0 ? (
@@ -86,12 +87,12 @@ const getDoctorImage = (name) => {
           onClose={() => setShowModal(false)}
         >
           {(close) => (
-            <div className="doctorbg" style={{ height: '100vh', overflow: 'scroll' }}>
-              <div>
+            <div className="doctorbgIC" style={{ height: '93vh', width: '50vh', overflow: 'auto' }}>
+              <div style={{height: '18%', width: '100%'}}>
                 <div className="doctor-card-profile-image-container">
-                <img src={getDoctorImage(name)} alt="" style={{height:"10rem", width:"10rem", margin:"0px"}}/>
+                <img src={getDoctorImage(name)} alt="" style={{ height: '150px', width: '150px', margin:"0px"}}/>
                 </div>
-                <div className="doctor-card-details">
+                <div className="doctor-card-details" >
                   <div className="doctor-card-detail-profile">{profilePic}</div>   
                   <div className="doctor-card-detail-name">{name}</div>
                   <div className="doctor-card-detail-speciality">{speciality}</div>
@@ -102,11 +103,11 @@ const getDoctorImage = (name) => {
 
               {appointments.length > 0 ? (
                 <>
-                  <h3 style={{ textAlign: 'center' }}>Appointment Booked!</h3>
+                  <h3 style={{ textAlign: 'center' , marginTop: '150px'}}>Appointment Booked!</h3>
                   {appointments.map((appointment) => (
-                    <div className="bookedInfo" key={appointment.id}>
+                    <div className="bookedInfoIC" key={appointment.id} style={{height: '20%', width: '100%'}}>
                       <p>Name: {appointment.name}</p>
-                      <p>Phone Number: {appointment.phoneNumber}</p>
+                      <p>Phone Number: {appointment.phone}</p>
                       <button onClick={() => handleCancel(appointment.id)}>Cancel Appointment</button>
                     </div>
                   ))}
