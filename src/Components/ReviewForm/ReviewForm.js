@@ -14,47 +14,45 @@ function ReviewForm() {
             { number: 5, name: 'Dr. Sarah Davis', speciality: 'Oncology', feedback: 'No', review: 'N/A' },
         ];
     
-   // State variables using useState hook
-  const [showForm, setShowForm] = useState(false);
-  const [submittedMessage, setSubmittedMessage] = useState('');
-  const [showWarning, setShowWarning] = useState(false);
-  
-  const [formData, setFormData] = useState({
-    name: '',
-    review: '',
-    rating: 0
-  });
-  
-  // Function to handle button click event
-  const handleButtonClick = () => {
-    setShowForm(true);
-  };
-  // Function to handle form input changes
-  const handleChange = (e) => {
-    // Update the form data based on user input
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-  // Function to handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmittedMessage(formData);
-    setFormData({
-      name: '',
-      review: '',
-      rating: 0
+    const [showModal, setShowModal] = useState(false);
+    const [review, setReview] = useState([]);
+    const [showForm, setShowForm] = useState(false);
+    const [submittedMessage, setSubmittedMessage] = useState('');
+    const [showWarning, setShowWarning] = useState(false);
+    
+    const [formData, setFormData] = useState({
+        name: '',
+        review: '',
     });
-    // Check if all required fields are filled before submission
-    if (formData.name && formData.review && formData.rating > 0) {
-      setShowWarning(false);
-    } else {
-      setShowWarning(true);
-    }
-  };
+    
+    // Function to handle button click event
+    const handleButtonClick = () => {
+        setShowForm(true);
+    };
+    // Function to handle form input changes
+    const handleChange = (e) => {
+        // Update the form data based on user input
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+    // Function to handle form submission
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setSubmittedMessage(formData);
+        setFormData({
+        name: '',
+        review: '',
+        });
+        // Check if all required fields are filled before submission
+        if (formData.name && formData.review> 0) {
+        setShowWarning(false);
+        } else {
+        setShowWarning(true);
+        }
+    };
 
     return (
         <div className="container">
-            {!showForm ? (
-                <div className="reviews-container">
+            <div className="reviews-container">
                 <div>
                     <h1 style={{textAlign:'left'}}>Reviews</h1>
                 </div>
@@ -74,36 +72,42 @@ function ReviewForm() {
                             <td style={{textAlign:'left'}}>{doctor.name}</td>
                             <td>{doctor.speciality}</td>
                             <td>
-                                <button className="review-table_body-button" onClick={handleButtonClick}>
-                                </button>
+                                <Popup modal open={showModal} onClose={() => setShowModal(false)} trigger={
+                                    <button className="reviewbutton">
+                                        <div>Click Here</div>
+                                    </button>
+                                }>
+                                    {(close) => (
+                                        <form className="feedbackForm" onSubmit={handleSubmit}>
+                                            <h2>Give Your Feedback</h2>
+                                            {/* Display warning message if not all fields are filled */}
+                                            {showWarning && <p className="warning">Please fill out all fields.</p>}
+                                            <div>
+                                            <label >Name:</label>
+                                            <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} />
+                                            </div>
+                                            <div>
+                                            <label >Review:</label>
+                                            <textarea id="review" name="review" value={formData.review} onChange={handleChange} />
+                                            </div>
+                                            {/* Submit button for form submission */}
+                                            <button type="submit">Submit</button>
+                                        </form>
+                                    )}
+                                </Popup>        
                             </td>
-                            <td>.</td>
+                                <td>
+                                {submittedMessage}
+                                </td>
                         </tr>
                     ))}
                         </tbody>
                     </table>
                 </div>
                 </div>
-                ):(
-                    
-                    <form onSubmit={handleSubmit}>
-                    <h2>Give Your Feedback</h2>
-                    {/* Display warning message if not all fields are filled */}
-                    {showWarning && <p className="warning">Please fill out all fields.</p>}
-                    <div>
-                      <label htmlFor="name">Name:</label>
-                      <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} />
-                    </div>
-                    <div>
-                      <label htmlFor="review">Review:</label>
-                      <textarea id="review" name="review" value={formData.review} onChange={handleChange} />
-                    </div>
-                    {/* Submit button for form submission */}
-                    <button type="submit">Submit</button>
-                  </form>
-                )}
+            
         </div>
-    )
+    );
 }
 
 export default ReviewForm
