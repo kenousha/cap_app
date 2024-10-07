@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 import "./Navbar.css";
+
 const Navbar = () => {
     const [click, setClick] = useState(false);
 
@@ -43,43 +43,45 @@ const Navbar = () => {
 
   return (
     <nav>
-    
-  <div className="logo">
-    <Link to="/">
-    StayHealthy 
-    <i style={{color:'#2190FF'}} className="fa fa-user-md"></i>
-    <span>.</span>
-    </Link>
-  </div>
-  <div className="nav__icon" onClick={handleClick}>
-        <i className={click ? "fa fa-times" : "fa fa-bars"}></i>
-      </div>
-  <ul className={click ? 'menu active' : 'menu'}>
-    <li className="item"> <Link to="/" > Home </Link> </li>
-    <li className="item"> <Link to="/InstantConsultation"> Instant Consultation </Link></li>
-    <li className="item"> <Link to="/BookingConsultation"> Appointments </Link></li>
-    <li className="item"> <Link to="/HealthBlog">Health Blog </Link></li>
-    <li className="item"> <Link to="/Reviews">Reviews </Link></li>
-    {isLoggedIn?(
-         <>
-            <li className="welcome-user" onClick={handleDropdown}>
-              Welcome, {username}!
-            </li>
-            <li className="item">
-              <button className="btn2" onClick={handleLogout}>
-                Logout
-              </button>
-            </li>
             
-          </>
-        ) : (
-          <>
-    <li className="item"> <Link to="/SignUp"><button className="btn1">Sign Up</button></Link></li>
-    <li className="item"> <Link to="/Login"> <button className="btn2">Login</button></Link></li>
-  </>
-        )}
-  </ul>
-</nav>
+        <div className="logo">
+            <Link to="/">
+            StayHealthy 
+            <i style={{color:'#2190FF'}} className="fa fa-user-md"></i>
+            <span>.</span>
+            </Link>
+        </div>
+
+        <div className="nav__icon" onClick={handleClick}>
+                <i className={click ? "fa fa-times" : "fa fa-bars"}></i>
+        </div>
+        
+        <ul className={click ? 'menu active' : 'menu'}>
+            <li className="item"> <Link to="/" > Home </Link> </li>
+            <li className="item"> <Link to="/InstantConsultation"> Instant Consultation </Link></li>
+            <li className="item"> <Link to="/BookingConsultation"> Appointments </Link></li>
+            <li className="item"> <Link to="/HealthBlog">Health Blog </Link></li>
+            <li className="item"> <Link to="/Reviews">Reviews </Link></li>
+            {isLoggedIn?(
+                <>
+                    <li className="welcome-user" onClick={handleDropdown}>
+                    Welcome, {username}!
+                    </li>
+                    <li className="item">
+                    <button className="btn2" onClick={handleLogout}>
+                        Logout
+                    </button>
+                    </li>
+                    
+                </>
+                ) : (
+                <>
+                    <li className="item"> <Link to="/SignUp"><button className="btn1">Sign Up</button></Link></li>
+                    <li className="item"> <Link to="/Login"> <button className="btn2">Login</button></Link></li>
+                </>
+                )}
+        </ul>
+    </nav>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { API_URL } from '../../config';
-import './Login.css'
+import './Login.css';
 
 
 const Login = () => {
@@ -50,27 +50,28 @@ const Login = () => {
   };
 
   return (
-    <div class="container">
-            <div class="login-text">
+    <div className="container-login">
+            <div className="login-text">
                 <h1>Login</h1>
             </div>
+
             <div className="new-member"> Are you a new member?
                 <Link to="/SignUp"><span> Sign Up</span></Link>
             </div> 
             
         <form onSubmit={login}>
-            <div class="form-group">
-                <label htmlFor="Email">Email</label>
+            <div className="form-group-login">
+                <label className="Email">Email</label>
                 <input value={email} onChange={(e) => setEmail(e.target.value)} type="Email" name="Email" id="Email" required className="form-control" placeholder="Enter your email" aria-describedby="Email input box" />
             </div>
 
-            <div class="form-group">
+            <div className="form-group-login">
                 <label htmlFor="password">Password</label><span>Forgot Password?</span>
                 <input value={password} onChange={(e) => setPassword(e.target.value)}type="password" name="password" id="password" required className="form-control" placeholder="Enter your password" aria-describedby="Password inbput box"/>
                 
             </div>
 
-            <div class="btn-group">
+            <div className="btn-group">
                 <button type="submit" class="btn submit-btn">Submit</button>
                 <button type="reset" class="btn reset-btn">Reset</button>
             </div>

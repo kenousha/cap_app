@@ -103,7 +103,7 @@
 .container {
   display: flex;
 width: fit-content;
-  padding: auto;
+  padding: 0px;
   justify-content: center;
 }
 

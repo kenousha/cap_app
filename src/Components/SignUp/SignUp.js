@@ -113,7 +113,7 @@ const SignUp = () => {
       };
 
   return (
-    <div className="container">
+    <div className="container-signup">
         <div className="signup-text">
             <h1>Sign Up</h1>
         </div>
@@ -121,7 +121,7 @@ const SignUp = () => {
             <Link to="/Login"><span> Login</span></Link>
         </div>
         <form method="POST" onSubmit={register}>
-            <div className="form-group">
+            <div className="form-group-signup">
                 <label for="role">Role</label>
                 <select onChange={handleRoleChange} value={role} type="role" id="role" required className="form-control" name="role">
                     <option value="" aria-describedby="Select your role">-Select your role-</option>
@@ -131,25 +131,25 @@ const SignUp = () => {
                 {errorRole && <div className="err" style={{ color: 'red' }}>{errorRole}</div>}
             </div>
 
-            <div className="form-group">
+            <div className="form-group-signup">
                 <label htmlFor="email">Email</label>
                 <input value={email} onChange={handleEmailChange} type="email" name="email" id="email" required className="form-control" placeholder="Enter your email" aria-describedby="Email input box" />
                 {errorEmail && <div className="err" style={{ color: 'red' }}>{errorEmail}</div>}
             </div>
 
-            <div className="form-group">
+            <div className="form-group-signup">
                 <label htmlFor="name">Name</label>
                 <input value={name} onChange={handleNameChange}type="text" name="name" id="name" required className="form-control" placeholder="Enter your name" aria-describedby="Name input box" />
                 {errorName && <div className="err" style={{ color: 'red' }}>{errorName}</div>}
             </div>
 
-            <div className="form-group">
+            <div className="form-group-signup">
                 <label for="phone">Phone</label>
                 <input value={phone} onChange={handlePhoneChange} type="tel" name="phone" id="phone" required className="form-control" minlength="10" maxlength="10" placeholder="Enter your phone number" aria-describedby="Phone number input box" />
                 {errorPhone && <div className="err" style={{ color: 'red' }}>{errorPhone}</div>}
             </div> 
 
-            <div className="form-group">
+            <div className="form-group-signup">
                 <label htmlFor="password">Password</label>
                 <input value={password} onChange={handlePasswordChange} type="password" name="password" id="password" required className="form-control" placeholder="Enter your password" aria-describedby="Password inbput box" />
                 {errorPassword && <div className="err" style={{ color: 'red' }}>{errorPassword}</div>}
