@@ -1,27 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { v4 as uuidv4 } from 'uuid';
 import './ReviewForm.css';
 import Feedback from './Feedback/Feedback'
 
-function ReviewForm() {
+const ReviewForm = () => {
     const [showModal, setShowModal] = useState(false);
+    const [reviewedDoctor, setReviewedDoctor] = useState(null);
     const [reviews, setReviews] = useState([]);
-  
-    const handleReview = () => {
+    const [reviewData, setReviewData] = useState(null);
+    
+    useEffect(() => {
+    const storedReviewData = JSON.parse(localStorage.getItem('reviewData'));
+    if (storedReviewData) {
+        setReviewData(storedReviewData);
+      }
+    }, []); 
+    
+    const handleReview = (doctor) => {
+      setReviewedDoctor(doctor);
       setShowModal(true);
     };
   
     const handleFormSubmit = async (reviewData) => {
-      const newReviews = {
+      const newReview = {
         id: uuidv4(),
         ...reviewData,
+        reviewedID: reviewedDoctor.number,
       };
-      const updatedreviews = [...reviews, newReviews];
-      setReviews(updatedreviews);
+      const updatedReviews = [...reviews, newReview];
+      setReviews(updatedReviews);
       setShowModal(false);
-    }  
+    };
 
         const doctors = [
             { number: 1, name: 'Dr. John Doe', speciality: 'Cardiology', feedback: 'Yes', review: '' },
@@ -33,9 +44,8 @@ function ReviewForm() {
 
     return (
         <div className="container">
-        
-        <div className="reviews-container">
-        <div> <h1 style={{textAlign:'left'}}>Reviews</h1></div>
+         <div className="reviews-container">
+          <div> <h1 style={{textAlign:'left'}}>Reviews</h1></div>
         
         <div>
         <table cellspacing="0" cellpadding="10">
@@ -48,22 +58,27 @@ function ReviewForm() {
             <th>Review Given</th>
         </thead>
                         
-        <tbody> {doctors.map((doctor) => (
-        <tr key={doctor.number}>           
+        <tbody> 
+         {doctors.map((doctor) => (
+          <tr key={doctor.number}>           
             <td>{doctor.number}</td>
             <td style={{textAlign:'left'}}> {doctor.name} </td>
             <td>{doctor.speciality}</td>
-            <td> <Popup modal open={showModal} onClose={() => setShowModal(false)} 
-             trigger={ <button className={`give-review-btn ${reviews.length > 0 ? 'review-given-review' : ''}`}>
-             {reviews.length > 0 ? (
-               <div>Review Given</div>
-             ) : (
-               <div>Give Review</div>
-             )}
-           </button> }>
-            
-            {(close) => (
-            <div> {reviews.length > 0 ? 
+            <td>
+             <button onClick={() => handleReview(doctor)}>
+               {reviews.some(review => review.reviewedID === doctor.number) ? <div className='allreadySubmitted'>Review Given</div> : <div className='notSubmitted'>Give Review</div>}
+             </button> 
+            </td>
+            <td>
+             {reviews.find(review => review.reviewedID === doctor.number)?.review || ''}
+            </td>
+            </tr>
+        ))}
+        </tbody>
+     </table>
+     <Popup open={showModal} modal onClose={() => setShowModal(false)}>
+    {(close) => (
+            <div> {reviews.some(review => review.reviewedID === doctors.number) ? 
             (<>
             <h3 style={{ textAlign: 'center'}}>Review Submited!</h3>
             {reviews.map((review) => (
@@ -72,21 +87,9 @@ function ReviewForm() {
             </div>))}
             </>)
          : 
-            (<Feedback onSubmit={handleFormSubmit} onClick={() => handleReview(reviews.id)}/> )}
+            (<Feedback doctor={reviewedDoctor} onSubmit={handleFormSubmit} onClick={() => handleReview(doctors)}/> )}
             </div> )}
-            </Popup> 
-            </td>
-
-            <td>
-            {reviews.map((review) => (
-            <div className="reviewInfo"  >
-            <p>Thank you for your feedback {review.name}</p>
-            </div>))}
-            </td>
-            
-            </tr>
-        ))}</tbody>
-     </table>
+            </Popup>
     </div>
  </div> 
 </div>
