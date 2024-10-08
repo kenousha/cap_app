@@ -95,20 +95,20 @@ function ReviewForm() {
                                                 <label >Rating:</label>
                                                     <div className='starrating'>
                                                     
-                                                        <input type='radio'  name='rate' id='star5'/>
-                                                        <label for='star5'  className="fa fa-star star"/>
+                                                        <input type='radio'  name='rate' id='star1'/>
+                                                        <label for='star1'  className="fa fa-star star"/>
 
-                                                        <input type='radio' name='rate' id='star4'/>                                            
-                                                        <label for='star4'  className="fa fa-star star"/>
+                                                        <input type='radio' name='rate' id='star2'/>                                            
+                                                        <label for='star2'  className="fa fa-star star"/>
 
                                                         <input type='radio' name='rate' id='star3'/>
                                                         <label for='star3'  className="fa fa-star star"/>
 
-                                                        <input type='radio' name='rate' id='star2'/>
-                                                        <label for='star2'  className="fa fa-star star"/>
+                                                        <input type='radio' name='rate' id='star4'/>
+                                                        <label for='star4'  className="fa fa-star star"/>
 
-                                                        <input type='radio' className="fa fa-star star"name='rate' id='star1'/>
-                                                        <label for='star1'  className="fa fa-star star"/>
+                                                        <input type='radio' className="fa fa-star star"name='rate' id='star5'/>
+                                                        <label for='star5'  className="fa fa-star star"/>
 
                                                     </div>
                                             </div>
