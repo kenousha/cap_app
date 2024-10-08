@@ -45,6 +45,7 @@ td {
 .feedbackForm label{
     text-align: left;
     margin: 10px;
+    flex-direction: column
 }
 
 .feedbackForm button {
@@ -61,17 +62,31 @@ td {
 padding: 5px;
 }
 
-.starrating span:hover {
-    color: rgb(255, 232, 29);
+.starrating{
+    display: flex;
+    flex-direction: row-reverse;
 }
-.starrating span:nth-child(1):hover~span:nth-child()~span:nth-child()~span:nth-child(4) {
+
+.starrating input{
+    display: none;
+}
+
+ .starrating input:not(:checked) ~ label:hover,
+ input:not(:checked) ~ label:hover ~ label{
     color: rgb(255, 232, 29);
 }
 
-.starrating span {
-    cursor: pointer;
+ input:checked ~ label {
+    color: rgb(255, 232, 29);
+}
+
+.starrating label {
     color: grey;
     font-size: 25px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     margin-left: 15px;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
 }

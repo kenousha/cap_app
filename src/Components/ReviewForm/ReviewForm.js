@@ -90,15 +90,27 @@ function ReviewForm() {
                                             <label >Review:</label>
                                             <textarea id="review" name="review" value={formData.review} onChange={handleChange} />
                                             </div>
+
                                             <div className='rating'>
-                                            <label >Rating:</label>
-                                            <div className='starrating'>
-                                            <span className="fa fa-star star1"></span>
-                                            <span className="fa fa-star star2"></span>
-                                            <span className="fa fa-star star3"></span>
-                                            <span className="fa fa-star star4"></span>
-                                            <span className="fa fa-star star5"></span>
-                                            </div>
+                                                <label >Rating:</label>
+                                                    <div className='starrating'>
+                                                    
+                                                        <input type='radio'  name='rate' id='star5'/>
+                                                        <label for='star5'  className="fa fa-star star"/>
+
+                                                        <input type='radio' name='rate' id='star4'/>                                            
+                                                        <label for='star4'  className="fa fa-star star"/>
+
+                                                        <input type='radio' name='rate' id='star3'/>
+                                                        <label for='star3'  className="fa fa-star star"/>
+
+                                                        <input type='radio' name='rate' id='star2'/>
+                                                        <label for='star2'  className="fa fa-star star"/>
+
+                                                        <input type='radio' className="fa fa-star star"name='rate' id='star1'/>
+                                                        <label for='star1'  className="fa fa-star star"/>
+
+                                                    </div>
                                             </div>
                                             {/* Submit button for form submission */}
                                             <button type="submit">Submit</button>
