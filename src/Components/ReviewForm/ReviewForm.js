@@ -78,16 +78,17 @@ const ReviewForm = () => {
      </table>
      <Popup open={showModal} modal onClose={() => setShowModal(false)}>
     {(close) => (
-            <div> {reviews.some(review => review.reviewedID === doctors.number) ? 
-            (<>
+            <div> {reviews.some(review => review.reviewedID === doctors.number) ? (
+            <>
             <h3 style={{ textAlign: 'center'}}>Review Submited!</h3>
             {reviews.map((review) => (
             <div className="reviewInfo" key={review.id} >
             <p>Thank you for your feedback {review.name}</p>
             </div>))}
-            </>)
-         : 
-            (<Feedback doctor={reviewedDoctor} onSubmit={handleFormSubmit} onClick={() => handleReview(doctors)}/> )}
+            </>
+            ) : (
+            <Feedback doctor={reviewedDoctor} onSubmit={handleFormSubmit} onClick={() => handleReview(doctors)}/> 
+            )}
             </div> )}
             </Popup>
     </div>
