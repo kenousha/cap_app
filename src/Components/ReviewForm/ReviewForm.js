@@ -12,7 +12,7 @@ const ReviewForm = () => {
     const [reviewData, setReviewData] = useState(null);
     
     useEffect(() => {
-    const storedReviewData = JSON.parse(localStorage.getItem('reviewData'));
+    const storedReviewData = ('reviewData');
     if (storedReviewData) {
         setReviewData(storedReviewData);
       }
