@@ -10,7 +10,7 @@ const handleFormSubmit = (e) => {
       }
       const formData = new FormData (e.currentTarget);
       const rating = formData.get("rating");
-      if (name && review && rating?.length >0 ) { 
+      if (reviewData.name && reviewData.review && rating?.length >0 ) { 
         setShowWarning(false);
         onSubmit({ name, review});
       } else {
@@ -19,7 +19,7 @@ const handleFormSubmit = (e) => {
     };
 
 return (
-<form className="feedbackForm" onSubmit={handleFormSubmit} >
+<form className="feedbackForm" onSubmit={handleFormSubmit} style={{overflow:'auto'}}>
 {showWarning && <p className="warning">Please fill out all fields.</p>}
     <div className="form-group">
       <label htmlFor="name">Name:</label>
@@ -44,4 +44,4 @@ return (
     <button type="submit" >Submit</button>
 </form>
 )};
- export default Feedback
+ export default Feedback;

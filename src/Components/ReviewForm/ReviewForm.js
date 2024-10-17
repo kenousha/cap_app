@@ -7,16 +7,16 @@ import Feedback from './Feedback/Feedback'
 
 const ReviewForm = () => {
     const [showModal, setShowModal] = useState(false);
-    const [reviewedDoctor, setReviewedDoctor] = useState(null);
+    const [reviewedDoctor, setReviewedDoctor] = useState([]);
     const [reviews, setReviews] = useState([]);
-    const [reviewData, setReviewData] = useState(null);
+    const [reviewData, setReviewData] = useState([]);
     
     useEffect(() => {
     const storedReviewData = ('reviewData');
     if (storedReviewData) {
         setReviewData(storedReviewData);
       }
-    }, []); 
+    }, [reviewData]); 
     
     const handleReview = (doctor) => {
       setReviewedDoctor(doctor);
@@ -42,58 +42,55 @@ const ReviewForm = () => {
             { number: 5, name: 'Dr. Sarah Davis', speciality: 'Oncology', feedback: 'No', review: '' },
         ];
 
-    return (
-        <div className="container">
-         <div className="reviews-container">
-          <div> <h1 style={{textAlign:'left'}}>Reviews</h1></div>
-        
-        <div>
-        <table cellspacing="0" cellpadding="10">
-        
-        <thead>
-            <th>Serial Number</th>
-            <th>Doctor Name</th>
-            <th>Doctor Speciality</th>
-            <th>Provide Feedback</th>
-            <th>Review Given</th>
-        </thead>
-                        
-        <tbody> 
-         {doctors.map((doctor) => (
-          <tr key={doctor.number}>           
-            <td>{doctor.number}</td>
-            <td style={{textAlign:'left'}}> {doctor.name} </td>
-            <td>{doctor.speciality}</td>
-            <td>
-             <button onClick={() => handleReview(doctor)}>
-               {reviews.some(review => review.reviewedID === doctor.number) ? <div className='allreadySubmitted'>Review Given</div> : <div className='notSubmitted'>Give Review</div>}
-             </button> 
-            </td>
-            <td>
+return (
+ <div className="container" style={{overflow:'hidden'}}>
+  <div className="reviews-container">
+        <div> <h1 style={{textAlign:'left'}}>Reviews</h1></div>
+    <table cellSpacing="0" cellPadding="10">       
+     <thead style={{textAlign:'center'}}>
+        <tr>
+         <th>Serial Number</th>
+         <th>Doctor Name</th>
+         <th>Doctor Speciality</th>
+         <th>Provide Feedback</th>
+         <th>Review Given</th>
+        </tr>
+     </thead>               
+     <tbody> 
+      {doctors.map((doctor) => (
+        <tr key={doctor.number}>           
+         <td>{doctor.number}</td>
+         <td> {doctor.name} </td>
+         <td>{doctor.speciality}</td>
+         <td>
+            <button onClick={() => handleReview(doctor)}>
+             {reviews.some(review => review.reviewedID === doctor.number) ? <div className='allreadySubmitted'>Review Given</div> : <div className='notSubmitted'>Give Review</div>}
+            </button> 
+         </td>
+         <td>
              {reviews.find(review => review.reviewedID === doctor.number)?.review || ''}
-            </td>
-            </tr>
-        ))}
-        </tbody>
-     </table>
-     <Popup open={showModal} modal onClose={() => setShowModal(false)}>
-    {(close) => (
-            <div> {reviews.some(review => review.reviewedID === doctors.number) ? (
-            <>
-            <h3 style={{ textAlign: 'center'}}>Review Submited!</h3>
-            {reviews.map((review) => (
-            <div className="reviewInfo" key={review.id} >
-            <p>Thank you for your feedback {review.name}</p>
-            </div>))}
-            </>
-            ) : (
-            <Feedback doctor={reviewedDoctor} onSubmit={handleFormSubmit} onClick={() => handleReview(doctors)}/> 
-            )}
-            </div> )}
-            </Popup>
-    </div>
- </div> 
-</div>
-)}
-
-export default ReviewForm
+         </td>
+        </tr>
+      ))}
+     </tbody>
+    </table>
+    <Popup open={showModal} modal onClose={() => setShowModal(false)}>
+     {(close) => (
+        <div> {reviews.some(review => review.reviewedID === doctors.number) ? (
+     <>
+     <h3 style={{ textAlign: 'center'}}>Review Submited!</h3>
+     {reviews.map((review) => (
+     <div key={review.id} style={{display:'none'}}/>
+     ))}
+     </>
+     ) : (
+     <Feedback doctor={reviewedDoctor} onSubmit={handleFormSubmit} onClick={() => handleReview(doctors)}/> 
+     )}
+     </div> 
+     )}
+     </Popup>
+  </div>
+ </div>
+ );
+};
+export default ReviewForm;
