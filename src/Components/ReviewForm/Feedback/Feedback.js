@@ -41,7 +41,7 @@ return (
             <input type='radio' name="rating" id='star1'/> <label htmlFor='star1' className="fa fa-star star"/>
         </div>
     </div>
-    <button type="submit" >Submit</button>
+    <button className="feedback-btn" type="submit" >Submit</button>
 </form>
 )};
  export default Feedback;

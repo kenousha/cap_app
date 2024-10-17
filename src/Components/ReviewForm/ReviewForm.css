@@ -6,13 +6,8 @@
     background-color: white;
     padding: 20px;
 }
-.reviewbutton {
-    border-radius: 50px;
-    padding: 5px 15px;
-    width: fit-content;
-    margin: 0%;
-}
-thead {
+
+.thead {
     width: 100%;
     font-weight: bold;
     text-align: left;
@@ -27,13 +22,45 @@ thead {
 
 }
 
-td {
+.td {
     border-top: 1px solid #ddd;
     text-align: center;
 
 }
+.review-btn{
+  padding: 0px;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  background-color: transparent;
+  transition: none;
+}
+.notSubmitted{
+  background-color: #007bff;
+  border: none;
+  border-radius: 7px;
+  padding: 5px 10px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.5s ease;
+}
+.notSubmitted:hover {
+  background-color: #0056b3;
+}
+.allreadySubmitted{
+    background-color: #e4e4e4;
+    outline: none;
+    border-radius: 7px;
+    padding: 5px 10px;
+    cursor: default;
+    border: none;
+    transition: none;
+  }
+.allreadySubmitted:hover {
+    background-color:  #e4e4e4;
+}
 
-form .feedbackForm {
+.feedbackForm {
     width: 100%;
     margin: auto;
     border-radius: 5px;

@@ -63,8 +63,8 @@ return (
          <td> {doctor.name} </td>
          <td>{doctor.speciality}</td>
          <td>
-            <button onClick={() => handleReview(doctor)}>
-             {reviews.some(review => review.reviewedID === doctor.number) ? <div className='allreadySubmitted'>Review Given</div> : <div className='notSubmitted'>Give Review</div>}
+            <button className='review-btn' onClick={() => handleReview(doctor)} disabled={!doctor}>
+             {reviews.some(review => review.reviewedID === doctor.number) ? <div className='allreadySubmitted'>Review Given</div> : <div disabled className='notSubmitted'>Give Review</div>}
             </button> 
          </td>
          <td>
