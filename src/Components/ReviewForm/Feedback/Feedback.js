@@ -10,13 +10,12 @@ const handleFormSubmit = (e) => {
       }
       const formData = new FormData (e.currentTarget);
       const rating = formData.get("rating");
-      if (reviewData.name && reviewData.review && rating?.length > 0 ) { 
+      if (name && review && rating?.length >0 ) { 
         setShowWarning(false);
+        onSubmit({ name, review});
       } else {
         setShowWarning(true);
       }
-      onSubmit({ name, review});
-
     };
 
 return (
