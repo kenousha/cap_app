@@ -21,6 +21,7 @@ const handleFormSubmit = (e) => {
 return (
 <form className="feedbackForm" onSubmit={handleFormSubmit} style={{overflow:'auto'}}>
 {showWarning && <p className="warning">Please fill out all fields.</p>}
+<h2 style={{fontSize:'20px'}} >Give Your Feedback</h2>
     <div className="form-group">
       <label htmlFor="name">Name:</label>
       <input type="text" id="name" value={name} onChange={(e) => (name= e.target.value)}/>
