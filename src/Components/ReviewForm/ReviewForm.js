@@ -35,6 +35,7 @@ const ReviewForm = () => {
       setShowModal(false);
       setSubmitted(true)
     };
+
         const doctors = [
             { number: 1, name: 'Dr. John Doe', speciality: 'Cardiology', feedback: 'Yes', review: '' },
             { number: 2, name: 'Dr. Jane Smith', speciality: 'Dermatology', feedback: 'No', review: '' },
@@ -63,10 +64,15 @@ return (
          <td>{doctor.number}</td>
          <td> {doctor.name} </td>
          <td>{doctor.speciality}</td>
-         <td>
-            <button className='review-btn' onClick={() => handleReview(doctor)} disabled={!reviewData || submited}>
-             {reviews.some(review => review.reviewedID === doctor.number) ? <div className='allreadySubmitted'>Review Given</div> : <div className='notSubmitted'>Give Review</div>}
-            </button> 
+         <td>{reviews.some(review => review.reviewedID === doctor.number) ? 
+            <button className='review-btn' onClick={() => handleReview(doctor)} disabled>
+             <div>Review Given</div>
+            </button>
+            :
+            <button className='review-btn' onClick={() => handleReview(doctor)}>
+             <div>Give Review</div>
+            </button>
+            }
          </td>
          <td>
              {reviews.find(review => review.reviewedID === doctor.number)?.review || ''}

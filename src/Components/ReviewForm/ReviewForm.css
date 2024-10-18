@@ -40,12 +40,14 @@
 }
 .review-btn:disabled{
     background-color: #e4e4e4;
+    color: #919090;
     outline: none;
     border-radius: 7px;
-    padding: 5px 10px;
+    padding: 5px 6px;
     cursor: default;
     border: none;
-    transition-property: none;  }
+    transition-property: none;  
+}
 
 
 .feedbackForm {
