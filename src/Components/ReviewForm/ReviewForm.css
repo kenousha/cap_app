@@ -28,37 +28,25 @@
 
 }
 .review-btn{
-  padding: 0px;
   border: none;
-  outline: none;
   border-radius: 7px;
-  background-color: transparent;
-  transition: none;
-}
-.notSubmitted{
   background-color: #007bff;
-  border: none;
-  border-radius: 7px;
   padding: 5px 10px;
   cursor: pointer;
-  outline: none;
-  transition: background-color 0.5s ease;
+  transition:  background-color 0.5s ease-in;
 }
-.notSubmitted:hover {
+.review-btn:hover {
   background-color: #0056b3;
 }
-.allreadySubmitted{
+.review-btn:disabled{
     background-color: #e4e4e4;
     outline: none;
     border-radius: 7px;
     padding: 5px 10px;
     cursor: default;
     border: none;
-    transition: none;
-  }
-.allreadySubmitted:hover {
-    background-color:  #e4e4e4;
-}
+    transition-property: none;  }
+
 
 .feedbackForm {
     width: 100%;

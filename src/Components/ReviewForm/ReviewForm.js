@@ -10,6 +10,7 @@ const ReviewForm = () => {
     const [reviewedDoctor, setReviewedDoctor] = useState([]);
     const [reviews, setReviews] = useState([]);
     const [reviewData, setReviewData] = useState([]);
+    const [submited, setSubmitted] = useState (false)
     
     useEffect(() => {
     const storedReviewData = ('reviewData');
@@ -32,8 +33,8 @@ const ReviewForm = () => {
       const updatedReviews = [...reviews, newReview];
       setReviews(updatedReviews);
       setShowModal(false);
+      setSubmitted(true)
     };
-
         const doctors = [
             { number: 1, name: 'Dr. John Doe', speciality: 'Cardiology', feedback: 'Yes', review: '' },
             { number: 2, name: 'Dr. Jane Smith', speciality: 'Dermatology', feedback: 'No', review: '' },
@@ -63,8 +64,8 @@ return (
          <td> {doctor.name} </td>
          <td>{doctor.speciality}</td>
          <td>
-            <button className='review-btn' onClick={() => handleReview(doctor)} disabled={!doctor}>
-             {reviews.some(review => review.reviewedID === doctor.number) ? <div className='allreadySubmitted'>Review Given</div> : <div disabled className='notSubmitted'>Give Review</div>}
+            <button className='review-btn' onClick={() => handleReview(doctor)} disabled={!reviewData || submited}>
+             {reviews.some(review => review.reviewedID === doctor.number) ? <div className='allreadySubmitted'>Review Given</div> : <div className='notSubmitted'>Give Review</div>}
             </button> 
          </td>
          <td>

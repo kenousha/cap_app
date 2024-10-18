@@ -35,7 +35,7 @@
     color:#969BA5;
 }
 
-.hero-section .button {
+.hero-section .start-btn {
     padding: 0.7rem 2rem;
     border-radius: 25px;
     background-color: #2190FF;
@@ -76,7 +76,7 @@ h2 {
 
 
 
-.button {
+.start-btn {
     transition: all 0.5s ease-in-out;
     font-size: 1em;
     padding: 1em;
@@ -86,7 +86,7 @@ h2 {
 }
 
 
-.button:hover {
+.start-btn:hover {
     transform: scale(0.98);
 }
 
@@ -106,7 +106,7 @@ h2 {
     .image {
         width: 500px;
     }
-    .hero-section .button{
+    .hero-section .start-btn{
         margin-top:15px;
         width: 45%;
     }
@@ -130,7 +130,7 @@ h2 {
 
 
 
-button,
+start-btn,
 a,
 li {
     cursor: pointer;
