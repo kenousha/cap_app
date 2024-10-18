@@ -70,7 +70,7 @@ return (
             </button>
             :
             <button className='review-btn' onClick={() => handleReview(doctor)}>
-             <div>Give Review</div>
+             <div>Click Here</div>
             </button>
             }
          </td>

@@ -34,16 +34,18 @@
   padding: 5px 10px;
   cursor: pointer;
   transition:  background-color 0.5s ease-in;
+  width: 130px;
 }
 .review-btn:hover {
   background-color: #0056b3;
 }
 .review-btn:disabled{
+    width: 130px;
     background-color: #e4e4e4;
     color: #919090;
     outline: none;
     border-radius: 7px;
-    padding: 5px 6px;
+    padding: 5px 10px;
     cursor: default;
     border: none;
     transition-property: none;  
