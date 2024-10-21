@@ -10,7 +10,6 @@ const ReviewForm = () => {
     const [reviewedDoctor, setReviewedDoctor] = useState([]);
     const [reviews, setReviews] = useState([]);
     const [reviewData, setReviewData] = useState([]);
-    const [submited, setSubmitted] = useState (false)
     
     useEffect(() => {
     const storedReviewData = ('reviewData');
@@ -33,15 +32,13 @@ const ReviewForm = () => {
       const updatedReviews = [...reviews, newReview];
       setReviews(updatedReviews);
       setShowModal(false);
-      setSubmitted(true)
     };
 
         const doctors = [
             { number: 1, name: 'Dr. John Doe', speciality: 'Cardiology', feedback: 'Yes', review: '' },
-            { number: 2, name: 'Dr. Jane Smith', speciality: 'Dermatology', feedback: 'No', review: '' },
-            { number: 3, name: 'Dr. Emily Johnson', speciality: 'Neurology', feedback: 'Yes', review: '' },
-            { number: 4, name: 'Dr. Michael Brown', speciality: 'Pediatrics', feedback: 'Yes', review: '' },
-            { number: 5, name: 'Dr. Sarah Davis', speciality: 'Oncology', feedback: 'No', review: '' },
+            { number: 2, name: 'Dr. Emily Johnson', speciality: 'Neurology', feedback: 'Yes', review: '' },
+            { number: 3, name: 'Dr. Michael Brown', speciality: 'Pediatrics', feedback: 'Yes', review: '' },
+            { number: 4, name: 'Dr. Sarah Davis', speciality: 'Oncology', feedback: 'No', review: '' },
         ];
 
 return (
