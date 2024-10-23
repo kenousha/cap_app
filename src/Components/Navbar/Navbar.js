@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import ProfileCard from "../ProfileCard/ProfileCard";
 
 const Navbar = () => {
     const [click, setClick] = useState(false);
@@ -64,8 +65,11 @@ const Navbar = () => {
             <li className="item"> <Link to="/Reviews">Reviews </Link></li>
             {isLoggedIn?(
                 <>
-                    <li className="welcome-user" onClick={handleDropdown}>
-                    Welcome, {username}!
+                    <li className="welcome-user" onClick={handleDropdown} >
+                    <p>Welcome, {username} {showDropdown ?(<span class="fa fa-caret-down"/>):(<span class="fa fa-caret-right"/>)} </p>
+                    {showDropdown ? (
+                    <ProfileCard username={username}/>
+                    ) : null}
                     </li>
                     <li className="item">
                     <button className="btn2" onClick={handleLogout}>

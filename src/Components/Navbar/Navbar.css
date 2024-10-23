@@ -30,11 +30,15 @@ nav {
     cursor: pointer;
     transition: 0.2s;
     color: #0d213f;
+}
+
+.welcome-user:hover {
+    color: #2190ff;
 
 }
 
 .welcome-user:hover .dropdown-menu {
-    display: block;
+    display: block;   
 }
 
 .dropdown-menu li {

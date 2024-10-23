@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from "react";
 import { API_URL } from "../../config";
 import { useNavigate } from "react-router-dom";
-import './Profile.css'
-// Define a Function component called Profile
-const Profile = () => {
+
+// Define a Function component called ProfileForm
+const ProfileForm = () => {
   // Set up state variables using the useState hook
   const [userDetails, setUserDetails] = useState({});
   const [updatedDetails, setUpdatedDetails] = useState({});
@@ -18,7 +18,7 @@ const Profile = () => {
   useEffect(() => {
     const authtoken = sessionStorage.getItem("auth-token");
     if (!authtoken) {
-      navigate("/Login");
+      navigate("/login");
     } else {
       fetchUserProfile();
     }
@@ -116,38 +116,20 @@ const Profile = () => {
     <div className="profile-container">
       {editMode ? (
         <form onSubmit={handleSubmit}>
-          <label>
-            Email
-            <input
-              type="email"
-              name="email"
-              value={userDetails.email}
-              disabled // Disable the email field
-            />
+          <label> Email
+            <input type="email" name="email" value={userDetails.email} disabled />
           </label>
-          <label>
-         Name
-         <input
-           type="text"
-           name="name"
-           value={updatedDetails.name}
-           onChange={handleInputChange}
-         />
-       </label>
-       <label>
-         Phone
-         <input
-           type="text"
-           name="phone"
-           value={updatedDetails.phone}
-           onChange={handleInputChange}
-         />
-       </label>
+          <label> Email
+            <input type="email" name="email" value={updatedDetails.name} onChange={handleInputChange} />
+          </label>
+          {/* Create similar logic for displaying and editing name and phone from userDetails */}
           <button type="submit">Save</button>
         </form>
       ) : (
         <div className="profile-details">
           <h1>Welcome, {userDetails.name}</h1>
+          <p> <b>Email:</b> {userDetails.email}</p>
+        <p><b>Phone:</b> {userDetails.phone}</p>
           {/* Implement code to display and allow editing of phone and email similar to above */}
           <button onClick={handleEdit}>Edit</button>
         </div>
@@ -156,5 +138,5 @@ const Profile = () => {
   );
 };
 
-// Export the Profile component as the default export
-export default Profile;
+// Export the ProfileForm component as the default export
+export default ProfileForm;
