@@ -8,7 +8,9 @@ const ProfileCard = () => {
         <li>
           <Link to="/Profile">Your Profile</Link>
         </li>
-        
+        <li>
+          <Link to="/Reports">Your Reports</Link>
+        </li>
       </ul>
     </div>
   );
