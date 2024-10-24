@@ -1,17 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './ProfileCard.css';
 
-const ProfileCard = ({ username }) => {
+const ProfileCard = () => {
   return (
     <div className="profile-card">
       <ul className="profile-card__list">
         <li>
-          <Link to="/ProfileForm">Your Profile</Link>
+          <Link to="/Profile">Your Profile</Link>
         </li>
-        <li>
-          <Link to="/reports">Your Reports</Link>
-        </li>
+        
       </ul>
     </div>
   );
