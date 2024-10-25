@@ -2,9 +2,21 @@ import React, { useEffect, useState } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { v4 as uuidv4 } from 'uuid';
-import './Reports.css'
+import './Reports.css';
+import Report1 from './/Reports/Report1.pdf'; import Report2 from './/Reports/Report2.pdf';
+import Report3 from './/Reports/Report3.pdf'; import Report4 from './/Reports/Report4.pdf';
 
 const Reports = () => {
+
+    const getDoctorReport = (name) => {
+        switch (name) {
+          case 'Dr. John Doe': return Report1;    
+          case 'Dr. Michael Brown': return Report2;
+          case 'Dr. Emily Johnson': return Report3;    
+          case 'Dr. Sarah Davis': return Report4;
+        }
+  };
+
     const [showModal, setShowModal] = useState(false);
     const [reviewedDoctor, setReviewedDoctor] = useState([]);
     const [reports, setreports] = useState([]);
@@ -50,8 +62,8 @@ return (
          <th>Serial Number</th>
          <th>Doctor Name</th>
          <th>Doctor Speciality</th>
-         <th>Provide Feedback</th>
-         <th>Review Given</th>
+         <th>View Report</th>
+         <th>Download Report</th>
         </tr>
      </thead>               
      <tbody> 
@@ -62,13 +74,13 @@ return (
          <td>{doctor.speciality}</td>
          <td>
           <button className='review-btn' onClick={() => handleReview(doctor)}>
-            <div>View Report</div>
+          <a target='_blank' href={Report1} className='review-btn' rel="noreferrer" style={{color:'white'}}>View Report</a>
           </button>
 
          </td>
          <td>
           <button className='review-btn' onClick={() => handleReview(doctor)}>
-            <div>Download Report</div>
+          <a target='_blank' href={Report1} download={Report1} className='review-btn' rel="noreferrer" style={{color:'white'}}>Download Report</a>
           </button>
 
          </td>
@@ -76,20 +88,6 @@ return (
       ))}
      </tbody>
     </table>
-    <Popup open={showModal} modal onClose={() => setShowModal(false)}>
-     {(close) => (
-        <div> {reports.some(review => review.reviewedID === doctors.number) ? (
-     <>
-     <h3 style={{ textAlign: 'center'}}>Review Submited!</h3>
-     {reports.map((review) => (
-     <div key={review.id} style={{display:'none'}}/>
-     ))}
-     </>
-     ) : (
-<></>     )}
-     </div> 
-     )}
-     </Popup>
   </div>
  </div>
  );
