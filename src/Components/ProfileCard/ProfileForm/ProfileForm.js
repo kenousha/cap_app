@@ -6,6 +6,10 @@ const ProfileForm = (name, email, phone) => {
   const [userDetails, setUserDetails] = useState([{name, email, phone}]);
   const [updatedDetails, setUpdatedDetails] = useState({});
   const [editMode, setEditMode] = useState(false);
+  const [errorPhone, setErrorPhone] = useState('');
+  const [errorName, setErrorName] = useState(''); 
+
+
   
   const navigate = useNavigate();
   
@@ -48,15 +52,33 @@ const ProfileForm = (name, email, phone) => {
   const handleEdit = () => {
     setEditMode(true);
   };
-
+const phoneRegex = /^[0-9]+$/;
+const nameRegex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s\-']+$/;
   // Function to update state when user inputs new data
-  const handleInputChange = (e) => {
+  const handlePhoneChange = (e) => {
+    const value = e.target.value;
     setUpdatedDetails({
       ...updatedDetails,
       [e.target.name]: e.target.value,
     });
+    if (phoneRegex.test(value) && value.length === 10) {
+          setErrorPhone(''); 
+        } else {
+          setErrorPhone('Phone number must contain only numbers and have 10 characters'); 
+        }
   };
-
+const handleNameChange = (e) => {
+    const value = e.target.value;
+    setUpdatedDetails({
+      ...updatedDetails,
+      [e.target.name]: e.target.value,
+    });
+   if (nameRegex.test(value)&& value.length >= 2) {
+              setErrorName(''); 
+            } else {
+              setErrorName('Please enter a valid name'); 
+            }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -106,11 +128,13 @@ const ProfileForm = (name, email, phone) => {
          </label>
          <label>
          Name
-          <input type="text" name="name" value={updatedDetails.name} onChange={handleInputChange}/>
+          <input type="text" name="name" value={updatedDetails.name} onChange={handleNameChange}/>
+           {errorName && <div className="err" style={{ color: 'red' }}>{errorName}</div>}
          </label>
          <label>
          Phone
-          <input type="text" name="phone" value={updatedDetails.phone} onChange={handleInputChange}/>
+          <input name="phone" value={updatedDetails.phone} onChange={handlePhoneChange}  type="tel" id="phone" required className="form-control" minlength="10" maxlength="10" aria-describedby="Phone number input box" />
+          {errorPhone && <div className="err" style={{ color: 'red', textAlign: 'center'}}>{errorPhone}</div>}
          </label>
           <button type="submit">Save</button>
         </form>
