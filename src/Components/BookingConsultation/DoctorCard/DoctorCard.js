@@ -80,25 +80,25 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, onSubmi
           onClose={() => setShowModal(false)}
         >
           {(close) => (
-            <div className="doctorbg" style={{ height: '93vh', width: '50vh', overflow: 'auto' }}>
-              <div style={{height: '20%', width: '100%'}}>
+            <div className="doctorbg" style={{ height: '100vh', overflow: 'scroll' }}>
+              <div>
                 <div className="doctor-card-profile-image-container">
-                <img src={getDoctorImage(name)} alt="" style={{ height: '150px', width: '150px', margin:"0px"}}/>
+                <img src={getDoctorImage(name)} alt="" style={{height:"10rem", width:"10rem", margin:"0px"}}/>
                 </div>
                 <div className="doctor-card-details">
                   <div className="doctor-card-detail-profile">{profilePic}</div>   
                   <div className="doctor-card-detail-name">{name}</div>
                   <div className="doctor-card-detail-speciality">{speciality}</div>
                   <div className="doctor-card-detail-experience">{experience} years experience</div>
-                  <div className="doctor-card-detail-ratings">Ratings: {ratings}</div>
+                  <div className="doctor-card-detail-consultationfees">Ratings: {ratings}</div>
                 </div>
               </div>
 
               {appointments.length > 0 ? (
                 <>
-                  <h3 style={{ textAlign: 'center' , marginTop: '150px'}}>Appointment Booked!</h3>
+                  <h3 style={{ textAlign: 'center' }}>Appointment Booked!</h3>
                   {appointments.map((appointment) => (
-                    <div className="bookedInfo" key={appointment.id} style={{height: '20%', width: '100%'}}>
+                    <div className="bookedInfo" key={appointment.id}>
                       <p>Name: {appointment.name}</p>
                       <p>Phone Number: {appointment.phone}</p>
                       <button onClick={() => handleCancel(appointment.id)}>Cancel Appointment</button>

@@ -4,6 +4,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import FindDoctorSearchIC from './FindDoctorSearchIC/FindDoctorSearchIC';
 import DoctorCardIC from './DoctorCardIC/DoctorCardIC';
 
+
 function InstantConsultation () {
     const [searchParams] = useSearchParams();
     const [doctors, setDoctors] = useState([]);
@@ -19,10 +20,13 @@ function InstantConsultation () {
         .then(res => res.json())
         .then(data => {
             if (searchParams.get('speciality')) {
+                // window.reload()
                 const filtered = data.filter(doctor => doctor.speciality.toLowerCase() === searchParams.get('speciality').toLowerCase());
+
                 setFilteredDoctors(filtered);
+                
                 setIsSearched(true);
-                window.reload()
+                // window.reload()
             } else {
                 setFilteredDoctors([]);
                 setIsSearched(false);
@@ -58,7 +62,8 @@ function InstantConsultation () {
         if (!authtoken) {
             navigate("/Login");
         }
-    })
+    }, [searchParams])
+
 
     return (
         <center>
@@ -70,7 +75,7 @@ function InstantConsultation () {
                     <h2>{filteredDoctors.length} doctors are available {searchParams.get('location')}</h2>
                     <h3>Book appointments with minimum wait-time & verified doctor details</h3>
                     {filteredDoctors.length > 0 ? (
-                    filteredDoctors.map(doctor => <DoctorCardIC className="doctorcard" {...doctor} key={doctor.name} />)
+                    filteredDoctors.map(doctor => <DoctorCardIC className="doctorcardIC" {...doctor} key={doctor.name} />)
                     ) : (
                     <p>No doctors found.</p>
                     )}

@@ -9,7 +9,7 @@
 .searchpage-container img {
     max-width: 100%;
 }
-.search-results-container .doctorcard{
+.search-results-container .doctorcardIC{
     display:flex;
     flex-direction:column;
     justify-content:space-between;

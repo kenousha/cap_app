@@ -48,7 +48,7 @@ const FindDoctorSearchIC = () => {
                      
                        {/* input box filters through specialities as user is typing */}
                        <input type="text" className="search-doctor-input-box" placeholder="Search doctor by speciality." 
-                        onFocus={() => setDoctorResultHidden(true) } onBlur={() => setDoctorResultHidden(false)} 
+                        onFocus={() => setDoctorResultHidden(false) } onBlur={() => setDoctorResultHidden(true)} 
                         value={searchDoctor} onChange={(e) => handleSearchInputChange(e.target.value)} />
                         
                         {/* search button shows first filtered result in inputbox */} 

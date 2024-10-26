@@ -19,7 +19,7 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit, name, phone, 
     };
   
     return (
-      <form onSubmit={handleFormSubmit} className="appointment-formIC">
+      <form onSubmit={handleFormSubmit} className="appointment-form">
         <div className="form-group">
           <label htmlFor="name">Name:</label>
           <input type="text" id="name" value={name} onChange={(e) => (name= e.target.value)} required/>
@@ -33,7 +33,7 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit, name, phone, 
           <input type="date" id="date" value={date} onChange={(e) => (date= e.target.value)} required/>
         </div>
         <div className="form-group">
-          <label htmlFor="time">Time</label>
+          <label htmlFor="role">Role</label>
                 <select type="time" id="time" value={time} onChange={(e) => (time= e.target.value)} required>
                     <option value="" aria-describedby="Select a time slot">-Select a time slot-</option>
                     <option value="10:00 AM" aria-describedby="10:00 AM">10:00AM</option>

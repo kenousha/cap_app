@@ -20,11 +20,14 @@ function BookingConsultation () {
         .then(res => res.json())
         .then(data => {
             if (searchParams.get('speciality')) {
+                // window.reload()
                 const filtered = data.filter(doctor => doctor.speciality.toLowerCase() === searchParams.get('speciality').toLowerCase());
+
                 setFilteredDoctors(filtered);
+                
                 setIsSearched(true);
-                } 
-            else {
+                // window.reload()
+            } else {
                 setFilteredDoctors([]);
                 setIsSearched(false);
             }
@@ -59,7 +62,7 @@ function BookingConsultation () {
         if (!authtoken) {
             navigate("/Login");
         }
-    })
+    }, [searchParams])
 
 
     return (
