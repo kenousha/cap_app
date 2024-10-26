@@ -26,7 +26,7 @@ const AppointmentFormIC = ({ doctorName, doctorSpeciality, onSubmit, name, phone
           <label htmlFor="phone">Phone Number:</label>
           <input type="tel" id="phone" value={phone} onChange={(e) => (phone= e.target.value)} required/>
         </div>
-        <button type="submit">Book Now</button>
+        <button className='booking-btn'type="submit">Book Now</button>
       </form>
     );
   };

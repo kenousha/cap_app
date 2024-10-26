@@ -41,8 +41,8 @@ const DoctorCardIC = ({ name, speciality, experience, ratings, profilePic, onSub
           case 'Dr. Elizabeth Clark': return svg4;      case 'Dr. Laura Taylor': return svg4;
           case 'Dr. Jessica White': return svg5;     case 'Dr. Emily Clark': return svg5;
           case 'Dr. Alan Dalkin': return svg6;      case 'Dr. Richard Pearson,': return svg6;
+          case 'Dr. Sarah Johnson': return svg7;         case 'Dr. Samantha Turner': return svg7;
           case 'Dr. Eugene J. Turner': return svg8;     case 'Dr. Kevin Miller': return svg8;
-          case 'Dr. Stephny Grosh': return svg7;
           default:
             return svg;  // Default image if name is not found
         }
@@ -51,20 +51,19 @@ const DoctorCardIC = ({ name, speciality, experience, ratings, profilePic, onSub
     <div className="doctor-card-container">
       <div className="doctor-card-details-container">
         <div className="doctor-card-profile-image-container">
-        <img src={getDoctorImage(name)} alt="" style={{height:"10rem", width:"10rem", margin:"0px"}}/>        
+        <img src={getDoctorImage(name)} alt=""/>        
         </div>
         <div className="doctor-card-details">
-          <div className="doctor-card-detail-profile">{profilePic}</div>   
           <div className="doctor-card-detail-name">{name}</div>
           <div className="doctor-card-detail-speciality">{speciality}</div>
           <div className="doctor-card-detail-experience">{experience} years experience</div>
-          <div className="doctor-card-detail-consultationfees">Ratings: {ratings}</div>
+          <div className="doctor-card-detail-ratings">Ratings: {ratings}</div>
         </div>
       </div>
       
       <div className="doctor-card-options-container">
        <Popup
-          style={{ backgroundColor: '#FFFFFF' }}
+          style={{ backgroundColor: '#FFFFFF', height:'60%%'}}
           trigger={
             <button className={`book-appointment-btn ${appointments.length > 0 ? 'cancel-appointment' : ''}`}>
               {appointments.length > 0 ? (
@@ -79,18 +78,15 @@ const DoctorCardIC = ({ name, speciality, experience, ratings, profilePic, onSub
           open={showModal}
           onClose={() => setShowModal(false)}
         >
-          {(close) => (
-            <div className="doctorbg" style={{ height: '100vh', overflow: 'scroll' }}>
+          {() => (
+            <div className="doctorbg" >
               <div>
-                <div className="doctor-card-profile-image-container">
                 <img src={getDoctorImage(name)} alt="" style={{height:"10rem", width:"10rem", margin:"0px"}}/>
-                </div>
-                <div className="doctor-card-details">
-                  <div className="doctor-card-detail-profile">{profilePic}</div>   
-                  <div className="doctor-card-detail-name">{name}</div>
-                  <div className="doctor-card-detail-speciality">{speciality}</div>
-                  <div className="doctor-card-detail-experience">{experience} years experience</div>
-                  <div className="doctor-card-detail-consultationfees">Ratings: {ratings}</div>
+                <div>
+                  <div style={{fontWeight:'bold', fontSize:'14px'}}>{name}</div>
+                  <div style={{fontSize:'14px'}}>{speciality}</div>
+                  <div style={{fontWeight:'bold', fontSize:'14px', color:'#888'}}>{experience} years experience</div>
+                  <div style={{fontWeight:'bold', fontSize:'14px', marginBottom:'5px'}}>Ratings: {ratings}</div>
                 </div>
               </div>
 
@@ -99,9 +95,9 @@ const DoctorCardIC = ({ name, speciality, experience, ratings, profilePic, onSub
                   <h3 style={{ textAlign: 'center' }}>Appointment Booked!</h3>
                   {appointments.map((appointment) => (
                     <div className="bookedInfo" key={appointment.id}>
-                      <p>Name: {appointment.name}</p>
-                      <p>Phone Number: {appointment.phone}</p>
-                      <button onClick={() => handleCancel(appointment.id)}>Cancel Appointment</button>
+                      <p>Name:<span style={{fontWeight:'normal'}}>{appointment.name}</span> </p>
+                      <p>Phone Number: <span style={{fontWeight:'normal'}}>{appointment.phone}</span></p>
+                      <button className='cancel-appointment' onClick={() => handleCancel(appointment.id)}>Cancel Appointment</button>
                     </div>
                   ))}
                 </>

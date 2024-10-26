@@ -40,7 +40,7 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit, name, phone, 
                     <option value="12:00PM" aria-describedby="12:00PM">12:00PM</option>
                 </select>
         </div>
-        <button type="submit">Book Now</button>
+        <button className='booking-btn' type="submit">Book Now</button>
       </form>
     );
   };
