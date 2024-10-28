@@ -15,7 +15,7 @@ const SignUp = () => {
     const [errorPhone, setErrorPhone] = useState(''); 
     const [errorEmail, setErrorEmail] = useState(''); 
     const [errorPassword, setErrorPassword] = useState('');
-    const [setError] = useState(''); 
+     const [showerr, setShowerr] = useState(''); // State to show error messages
     const navigate = useNavigate(); 
   
     const register = async (e) => {
@@ -51,10 +51,10 @@ const SignUp = () => {
         } else {
             if (json.error) {
                 for (const error of json.error) {
-                    setError(error.msg); 
+                    setShowerr(error.msg); 
                 }
             } else {
-                setError(json.error);
+                setShowerr(json.error);
             }
         }
     };
@@ -63,6 +63,7 @@ const SignUp = () => {
 
     const handleRoleChange = (e) => {
         const value = e.target.value;
+        e.preventDefault();
         setRole(value);
     
         if (value==='') {
@@ -73,6 +74,7 @@ const SignUp = () => {
       };
     const handleEmailChange = (e) => {
       const value = e.target.value;
+      e.preventDefault();
       setEmail(value);
   
       if (emailRegex.test(value)) {
@@ -83,6 +85,7 @@ const SignUp = () => {
     };
     const handlePhoneChange = (e) => {
         const value = e.target.value;
+        e.preventDefault();
         setPhone(value);
     
         if (value.length === 10) {
@@ -93,6 +96,7 @@ const SignUp = () => {
       };
       const handleNameChange = (e) => {
         const value = e.target.value;
+        e.preventDefault();
         setName(value);
         
         if (nameRegex.test(value)&& value.length >= 2) {
@@ -103,6 +107,7 @@ const SignUp = () => {
       };
       const handlePasswordChange = (e) => {
         const value = e.target.value;
+        e.preventDefault();
         setPassword(value);
     
         if (value.length >= 8) {
@@ -111,6 +116,7 @@ const SignUp = () => {
           setErrorPassword('Password must have min 8 characters'); 
         }
       };
+      
 
   return (
     <div className="container-signup">
