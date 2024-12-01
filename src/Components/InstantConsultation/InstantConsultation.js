@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import './InstantConsultation.css';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import FindDoctorSearchIC from './FindDoctorSearchIC/FindDoctorSearchIC';
@@ -15,28 +15,6 @@ function InstantConsultation () {
         localStorage.setItem('doctorData', JSON.stringify(data));
       };
     
-    const getDoctorsDetails = () => {
-        fetch('https://api.npoint.io/9a5543d36f1460da2f63')
-        .then(res => res.json())
-        .then(data => {
-            if (searchParams.get('speciality')) {
-                // window.reload()
-                const filtered = data.filter(doctor => doctor.speciality.toLowerCase() === searchParams.get('speciality').toLowerCase());
-
-                setFilteredDoctors(filtered);
-                
-                setIsSearched(true);
-                // window.reload()
-            } else {
-                setFilteredDoctors([]);
-                setIsSearched(false);
-            }
-            setDoctors(data);
-             // Save data to localStorage once fetched
-             saveDoctorDataToLocalStorage(data);
-        })
-        .catch(err => console.log(err));
-    }
     const handleSearch = (searchText) => {
 
         if (searchText === '') {
@@ -56,13 +34,45 @@ function InstantConsultation () {
         }
     };
     const navigate = useNavigate();
+
+    const getDoctorsDetails = useCallback(async () => {
+        fetch('https://api.npoint.io/9a5543d36f1460da2f63')
+        .then(res => res.json())
+        .then(data => {
+            if (searchParams.get('speciality')) {
+                // window.reload()
+                const filtered = data.filter(doctor => doctor.speciality.toLowerCase() === searchParams.get('speciality').toLowerCase());
+
+                setFilteredDoctors(filtered);
+                
+                setIsSearched(true);
+                // window.reload()
+            } else {
+                setFilteredDoctors([]);
+                setIsSearched(false);
+            }
+            setDoctors(data);
+             saveDoctorDataToLocalStorage(data);
+        })
+        .catch(err => console.log(err));
+        }, [searchParams]);
+
     useEffect(() => {
-        getDoctorsDetails();
-        const authtoken = sessionStorage.getItem("auth-token");
-        if (!authtoken) {
-            navigate("/Login");
-        }
-    }, [searchParams])
+        const fetchDetails = async () => {
+            try {
+                const authtoken = sessionStorage.getItem("auth-token");
+                if (!authtoken) {
+                    navigate("/Login");
+                    return;
+                }
+                await getDoctorsDetails();
+            } catch (error) {
+                console.error("Failed to fetch doctor details:", error);
+            }
+        };
+
+        fetchDetails();
+    }, [searchParams, navigate, getDoctorsDetails]);
 
 
     return (

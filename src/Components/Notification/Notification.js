@@ -33,25 +33,21 @@ const Notification = ({ children }) => {
   return (
     <div>
       {/* Render Navbar component */}
-      <Navbar ></Navbar>
-      {/* Render children components */}
+      <Navbar/>
       {children}
+
       {/* Display appointment details if user is logged in and appointmentData is available */}
       {isLoggedIn && appointmentData  && (
         <>
-          <div className="appointment-card-container">
-            <div className="appointment-card__content">
+          <div className="appointment-card-container" style={{ zIndex:'-10', position:'fixed', left:'0', bottom:'0'}}>
+            <div className="appointment-card-content">
               {/* Display title for appointment details */}
-              <p className="p app-details">
+              <p className="app-details">
                <h3 className="appointment-card__title">Appointment Details</h3>
                 <strong>Doctor:</strong> {appointmentData.doctorName}<br></br>
                 <strong>Speciality:</strong> {appointmentData.doctorSpeciality}<br></br>
                 <strong>Appointment Date:</strong> {appointmentData.date}<br></br>
-                <strong>Time of Appointment:</strong> {appointmentData.time}<br></br>
-              </p>
-              <p className="p patient-details">
-               <h3 className="appointment-card__title">Patient Details</h3>
-                <strong>Username:</strong> {username}<br></br> 
+                <strong>Time Slot:</strong> {appointmentData.time}<br></br>
                 <strong> Patient Name:</strong> {appointmentData.name}<br></br>
                 <strong>Phone Number:</strong> {appointmentData.phone}<br></br>
               </p>

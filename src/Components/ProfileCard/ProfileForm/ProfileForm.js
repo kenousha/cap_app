@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { API_URL } from "./../../../config";
 import { useNavigate } from "react-router-dom";
 
@@ -12,17 +12,8 @@ const ProfileForm = (name, email, phone) => {
 
   
   const navigate = useNavigate();
-  
-  useEffect(() => {
-    const authtoken = sessionStorage.getItem("auth-token");
-    if (!authtoken) {
-      navigate("/login");
-    } else {
-      fetchUserProfile();
-    }
-  }, [navigate]);
 
-  const fetchUserProfile = async () => {
+  const fetchUserProfile = useCallback( async () => {
     try {
       const authtoken = sessionStorage.getItem("auth-token");
       const email = sessionStorage.getItem("email"); // Get the email from session storage
@@ -47,15 +38,25 @@ const ProfileForm = (name, email, phone) => {
     } catch (error) {
       console.error(error);
     }
-  };
+  }, [navigate]);
 
-  const handleEdit = () => {
+  useEffect(() => {
+    const authtoken = sessionStorage.getItem("auth-token");
+    if (!authtoken) {
+      navigate("/login");
+    } else {
+      fetchUserProfile();
+    }
+  }, [fetchUserProfile, navigate]);
+
+const handleEdit = () => {
     setEditMode(true);
   };
+
 const phoneRegex = /^[0-9]+$/;
 const nameRegex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s\-']+$/;
-  // Function to update state when user inputs new data
-  const handlePhoneChange = (e) => {
+
+ const handlePhoneChange = (e) => {
     const value = e.target.value;
     setUpdatedDetails({
       ...updatedDetails,
