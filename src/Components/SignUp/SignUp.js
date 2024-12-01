@@ -15,7 +15,6 @@ const SignUp = () => {
     const [errorPhone, setErrorPhone] = useState(''); 
     const [errorEmail, setErrorEmail] = useState(''); 
     const [errorPassword, setErrorPassword] = useState('');
-     const [showerr, setShowerr] = useState(''); // State to show error messages
     const navigate = useNavigate(); 
   
     const register = async (e) => {
@@ -48,15 +47,8 @@ const SignUp = () => {
             
             navigate("/");
             window.location.reload(); 
-        } else {
-            if (json.error) {
-                for (const error of json.error) {
-                    setShowerr(error.msg); 
-                }
-            } else {
-                setShowerr(json.error);
-            }
-        }
+        } 
+        
     };
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     const nameRegex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s\-']+$/;

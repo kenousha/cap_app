@@ -11,9 +11,11 @@ const Reports = () => {
     const getDoctorReport = (name) => {
         switch (name) {
           case 'Dr. John Doe': return Report1;    
-          case 'Dr. Michael Brown': return Report2;
-          case 'Dr. Emily Johnson': return Report3;    
+          case 'Dr. Michael Brown': return Report3;
+          case 'Dr. Emily Johnson': return Report2;    
           case 'Dr. Sarah Davis': return Report4;
+                default:
+        return null;
         }
   };
 
@@ -74,13 +76,13 @@ return (
          <td>{doctor.speciality}</td>
          <td>
           <button className='review-btn' onClick={() => handleReview(doctor)}>
-          <a target='_blank' href={Report1} className='review-btn' rel="noreferrer" style={{color:'white'}}>View Report</a>
+          <a target='_blank' href={getDoctorReport(doctor.name)} className='review-btn' rel="noreferrer" style={{color:'white'}}>View Report</a>
           </button>
 
          </td>
          <td>
           <button className='review-btn' onClick={() => handleReview(doctor)}>
-          <a target='_blank' href={Report1} download={Report1} className='review-btn' rel="noreferrer" style={{color:'white'}}>Download Report</a>
+          <a target='_blank' href={getDoctorReport(doctor.name)} download={getDoctorReport(doctor.name)} className='review-btn' rel="noreferrer" style={{color:'white'}}>Download Report</a>
           </button>
 
          </td>
