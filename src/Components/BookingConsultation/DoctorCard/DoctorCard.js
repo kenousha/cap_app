@@ -48,24 +48,24 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, onSubmi
         }
     };
   return (
-    <div className="doctor-card-container">
-      <div className="doctor-card-details-container">
-        <div className="doctor-card-profile-image-container">
+    <div className="bc-dr-card-container">
+      <div className="bc-dr-card-details-container">
+        <div className="bc-dr-card-profile-image-container">
         <img src={getDoctorImage(name)} alt=""/>        
         </div>
-        <div className="doctor-card-details">
-          <div className="doctor-card-detail-name">{name}</div>
-          <div className="doctor-card-detail-speciality">{speciality}</div>
-          <div className="doctor-card-detail-experience">{experience} years experience</div>
-          <div className="doctor-card-detail-ratings">Ratings: {ratings}</div>
+        <div className="bc-dr-card-details">
+          <div className="bc-dr-card-detail-name">{name}</div>
+          <div className="bc-dr-card-detail-speciality">{speciality}</div>
+          <div className="bc-dr-card-detail-experience">{experience} years experience</div>
+          <div className="bc-dr-card-detail-ratings">Ratings: {ratings}</div>
         </div>
       </div>
       
-      <div className="doctor-card-options-container">
+      <div className="bc-dr-card-options-container">
        <Popup
           style={{ backgroundColor: '#FFFFFF' }}
           trigger={
-            <button className={`book-appointment-btn ${appointments.length > 0 ? 'cancel-appointment' : ''}`}>
+            <button className={`bc-book-appointment-btn ${appointments.length > 0 ? 'bc-cancel-appointment-btn' : ''}`}>
               {appointments.length > 0 ? (
                 <div>Cancel Appointment</div>
               ) : (
@@ -79,24 +79,24 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, onSubmi
           onClose={() => setShowModal(false)}
         >
           {() => (
-            <div className="doctorbg">
+            <div className="bc-doctorbg" style={{height:'fit-content'}}>
              <div>
-             <img src={getDoctorImage(name)} alt="" />
-              <div >
-                <div style={{fontWeight:'bold', fontSize:'14px'}}>{name}</div>
-                <div style={{fontSize:'14px'}}>{speciality}</div>
-                <div style={{fontWeight:'bold', fontSize:'14px', color:'#888'}}>{experience} years experience</div>
-                <div style={{fontWeight:'bold', fontSize:'14px', marginBottom:'5px'}}>Ratings: {ratings}</div>
+             <img style={{width:'200px', height:'170px'}} src={getDoctorImage(name)} alt="" />
+              <div style={{textAlign:'center'}}>
+                <div style={{fontWeight:'bold'}}>{name}</div>
+                <div>{speciality}</div>
+                <div style={{fontWeight:'bold', color:'#888'}}>{experience} years experience</div>
+                <div style={{fontWeight:'bold', marginBottom:'5px'}}>Ratings: {ratings}</div>
               </div>
              </div>
               {appointments.length > 0 ? (
                 <>
                   <h3 style={{ textAlign: 'center'}}>Appointment Booked!</h3>
                   {appointments.map((appointment) => (
-                    <div className="bookedInfo" key={appointment.id}>
+                    <div className="bc-bookedInfo" key={appointment.id}>
                       <p>Name:<span style={{fontWeight:'normal'}}>{appointment.name}</span> </p>
                       <p>Phone Number: <span style={{fontWeight:'normal'}}>{appointment.phone}</span></p>
-                      <button className='cancel-appointment' onClick={() => handleCancel(appointment.id)}>Cancel Appointment</button>
+                      <button className='bc-cancel-appointment-btn' onClick={() => handleCancel(appointment.id)}>Cancel Appointment</button>
                     </div>
                   ))}
                 </>

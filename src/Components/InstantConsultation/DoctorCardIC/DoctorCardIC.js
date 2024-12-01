@@ -79,14 +79,14 @@ const DoctorCardIC = ({ name, speciality, experience, ratings, profilePic, onSub
           onClose={() => setShowModal(false)}
         >
           {() => (
-            <div className="doctorbg" >
+            <div className="doctorbg" style={{maxWidth:'fit-content', display: 'grid', placeItems:'center'}}>
               <div>
                 <img src={getDoctorImage(name)} alt="" style={{height:"10rem", width:"10rem", margin:"0px"}}/>
-                <div>
-                  <div style={{fontWeight:'bold', fontSize:'14px'}}>{name}</div>
-                  <div style={{fontSize:'14px'}}>{speciality}</div>
-                  <div style={{fontWeight:'bold', fontSize:'14px', color:'#888'}}>{experience} years experience</div>
-                  <div style={{fontWeight:'bold', fontSize:'14px', marginBottom:'5px'}}>Ratings: {ratings}</div>
+                <div style={{textAlign:'center'}}>
+                  <div style={{fontWeight:'bold'}}>{name}</div>
+                  <div>{speciality}</div>
+                  <div style={{fontWeight:'bold', color:'#888'}}>{experience} years experience</div>
+                  <div style={{fontWeight:'bold', marginBottom:'5px'}}>Ratings: {ratings}</div>
                 </div>
               </div>
 

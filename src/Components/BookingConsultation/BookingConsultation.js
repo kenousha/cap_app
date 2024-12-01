@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import './BookingConsultation.css';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import FindDoctorSearch from './FindDoctorSearch/FindDoctorSearch';
@@ -15,7 +15,27 @@ function BookingConsultation () {
         localStorage.setItem('doctorData', JSON.stringify(data));
       };
     
-    const getDoctorsDetails = () => {
+    const handleSearch = (searchText) => {
+
+        if (searchText === '') {
+            setFilteredDoctors([]);
+            setIsSearched(false);
+            } else {
+                
+            const filtered = doctors.filter(
+                (doctor) =>
+                doctor.speciality.toLowerCase().includes(searchText.toLowerCase())
+                
+            );
+                
+            setFilteredDoctors(filtered);
+            setIsSearched(true);
+           
+        }
+    };
+    const navigate = useNavigate();
+
+    const getDoctorsDetails = useCallback(async () => {
         fetch('https://api.npoint.io/9a5543d36f1460da2f63')
         .then(res => res.json())
         .then(data => {
@@ -36,33 +56,24 @@ function BookingConsultation () {
              saveDoctorDataToLocalStorage(data);
         })
         .catch(err => console.log(err));
-    }
-    const handleSearch = (searchText) => {
+        }, [searchParams]);
 
-        if (searchText === '') {
-            setFilteredDoctors([]);
-            setIsSearched(false);
-            } else {
-                
-            const filtered = doctors.filter(
-                (doctor) =>
-                doctor.speciality.toLowerCase().includes(searchText.toLowerCase())
-                
-            );
-                
-            setFilteredDoctors(filtered);
-            setIsSearched(true);
-           
-        }
-    };
-    const navigate = useNavigate();
     useEffect(() => {
-        getDoctorsDetails();
-        const authtoken = sessionStorage.getItem("auth-token");
-        if (!authtoken) {
-            navigate("/Login");
-        }
-    }, [searchParams])
+        const fetchDetails = async () => {
+            try {
+                const authtoken = sessionStorage.getItem("auth-token");
+                if (!authtoken) {
+                    navigate("/Login");
+                    return;
+                }
+                await getDoctorsDetails();
+            } catch (error) {
+                console.error("Failed to fetch doctor details:", error);
+            }
+        };
+
+        fetchDetails();
+    }, [searchParams, navigate, getDoctorsDetails]);
 
 
     return (
