@@ -44,17 +44,11 @@ return (
          <td> {doctor.name} </td>
          <td>{doctor.speciality}</td>
          <td>
-          <button className='review-btn'>
-          <a target='_blank' href={getDoctorReport(doctor.name)} className='review-btn' rel="noreferrer" style={{color:'white'}}>View Report</a>
-          </button>
-
-         </td>
+          <a target='_blank' href={getDoctorReport(doctor.name)} className='report-btn' rel="noreferrer">
+            View Report </a> </td>
          <td>
-          <button className='review-btn'>
-          <a target='_blank' href={getDoctorReport(doctor.name)} download={getDoctorReport(doctor.name)} className='review-btn' rel="noreferrer" style={{color:'white'}}>Download Report</a>
-          </button>
-
-         </td>
+          <a href={getDoctorReport(doctor.name)} download={getDoctorReport(doctor.name)} className='report-btn' rel="noreferrer">
+            Download Report </a> </td>
         </tr>
       ))}
      </tbody>
