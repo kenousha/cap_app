@@ -1,18 +1,28 @@
 import React, { useState } from "react";
 
-function Feedback ({name, review, onSubmit}) {
-const [showWarning, setShowWarning] = useState(false);
+function Feedback ({onSubmit}) {
+ const [name, setName] = useState("");
+ const [review, setReview] = useState("");
+ const [rating, setRating] = useState("");
+ const [showWarning, setShowWarning] = useState(false);
+
+const handleNameChange = (e) => {
+    const value = e.target.value;
+    e.preventDefault();
+    setName(value);
+}
+
+const handleReviewChange = (e) => {
+    const value = e.target.value;
+    e.preventDefault();
+    setReview(value);
+}
+
 const handleFormSubmit = (e) => {
       e.preventDefault();
-      const reviewData = {
-        "name": name,
-        "review": review,
-      }
-      const formData = new FormData (e.currentTarget);
-      const rating = formData.get("rating");
-      if (reviewData.name && reviewData.review && rating?.length >0 ) { 
+      if (name && review && rating ) { 
         setShowWarning(false);
-        onSubmit({ name, review});
+        onSubmit({review});
       } else {
         setShowWarning(true);
       }
@@ -24,22 +34,29 @@ return (
 <h2 style={{fontSize:'20px'}} >Give Your Feedback</h2>
     <div className="form-group">
       <label htmlFor="name">Name:</label>
-      <input type="text" id="name" value={name} onChange={(e) => (name= e.target.value)}/>
+      <input type="text" id="name" value={name} onChange={handleNameChange}/>
     </div>
                                     
     <div>
         <label htmlFor="review">Review:</label>
-        <textarea type="text" id="review" value={review} onChange={(e) => (review= e.target.value)}/>
+        <textarea type="text" id="review" value={review} onChange={handleReviewChange}/>
     </div>
 
     <div className='rating'>
         <label >Rating:</label>
         <div className='starrating'>
-            <input type='radio' name="rating" id='star5'/> <label htmlFor='star5'  className="fa fa-star star"/>
-            <input type='radio' name="rating" id='star4'/> <label htmlFor='star4' className="fa fa-star star"/>
-            <input type='radio' name="rating" id='star3'/> <label htmlFor='star3' className="fa fa-star star"/>
-            <input type='radio' name="rating" id='star2'/> <label htmlFor='star2' className="fa fa-star star"/>
-            <input type='radio' name="rating" id='star1'/> <label htmlFor='star1' className="fa fa-star star"/>
+        {[5, 4, 3, 2, 1].map((star) => (
+            <React.Fragment key={star}>
+              <input
+                type="radio"
+                name="rating"
+                id={`star${star}`}
+                value={star}
+                onChange={(e) => setRating(e.target.value)}
+              />
+              <label htmlFor={`star${star}`} className="fa fa-star star" />
+            </React.Fragment>
+          ))}
         </div>
     </div>
     <button className="feedback-btn" type="submit" >Submit</button>

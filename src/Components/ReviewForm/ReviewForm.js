@@ -24,7 +24,6 @@ const ReviewForm = () => {
     };
   
     const handleFormSubmit = async (reviewData) => {
-      e.preventDefault();
       const newReview = {
         id: uuidv4(),
         ...reviewData,
