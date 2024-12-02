@@ -11,7 +11,7 @@ function BookingConsultation () {
     const [filteredDoctors, setFilteredDoctors] = useState([]);
     const [isSearched, setIsSearched] = useState(false);
 
-    const saveDoctorDataToLocalStorage = (data) => {
+    const saveDoctorDataTosessionStorage = (data) => {
         sessionStorage.setItem('doctorData', JSON.stringify(data));
       };
     
@@ -52,8 +52,8 @@ function BookingConsultation () {
                 setIsSearched(false);
             }
             setDoctors(data);
-             // Save data to localStorage once fetched
-             saveDoctorDataToLocalStorage(data);
+             // Save data to sessionStorage once fetched
+             saveDoctorDataTosessionStorage(data);
         })
         .catch(err => console.log(err));
         }, [searchParams]);
@@ -61,7 +61,7 @@ function BookingConsultation () {
     useEffect(() => {
         const fetchDetails = async () => {
             try {
-                const authtoken = localStorage.getItem("auth-token");
+                const authtoken = sessionStorage.getItem("auth-token");
                 if (!authtoken) {
                     navigate("/Login");
                     return;

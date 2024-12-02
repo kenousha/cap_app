@@ -10,7 +10,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (localStorage.getItem("auth-token")) {
+    if (sessionStorage.getItem("auth-token")) {
       navigate("/");
     }
   }, [navigate]);
@@ -32,8 +32,8 @@ const Login = () => {
     const json = await res.json();
     if (json.authtoken) {
       // If authentication token is received, store it in session storage
-      localStorage.setItem('auth-token', json.authtoken);
-      localStorage.setItem('email', email);
+      sessionStorage.setItem('auth-token', json.authtoken);
+      sessionStorage.setItem('email', email);
       // Redirect to home page and reload the window
       navigate('/');
       window.location.reload();

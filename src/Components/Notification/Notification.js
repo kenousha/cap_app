@@ -13,8 +13,8 @@ const Notification = ({ children }) => {
 
   // useEffect hook to perform side effects in the component
   useEffect(() => {
-    // Retrieve stored username, doctor data, and appointment data from sessionStorage and localStorage
-    const storedUsername = localStorage.getItem('email');
+    // Retrieve stored username, doctor data, and appointment data from sessionStorage and sessionStorage
+    const storedUsername = sessionStorage.getItem('email');
     const storedAppointmentData = JSON.parse(sessionStorage.getItem('appointmentData'));
 
 
@@ -32,16 +32,11 @@ const Notification = ({ children }) => {
   // Return JSX elements to display Navbar, children components, and appointment details if user is logged in
   return (
     <div>
-      {/* Render Navbar component */}
       <Navbar/>
       {children}
-
-      {/* Display appointment details if user is logged in and appointmentData is available */}
-      {isLoggedIn && appointmentData  && (
-        <>
+      {isLoggedIn && appointmentData  && (<>
           <div className="appointment-card-container" style={{ zIndex:'-10', position:'fixed', left:'0', bottom:'0'}}>
             <div className="appointment-card-content">
-              {/* Display title for appointment details */}
               <p className="app-details">
                <h3 className="appointment-card__title">Appointment Details</h3>
                 <strong>Doctor:</strong> {appointmentData.doctorName}<br></br>

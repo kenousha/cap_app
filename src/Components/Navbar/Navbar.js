@@ -13,10 +13,10 @@ const Navbar = () => {
     const handleClick = () => setClick(!click);
     
     const handleLogout = () => {
-        localStorage.removeItem("auth-token");
-        localStorage.removeItem("name");
-        localStorage.removeItem("email");
-        localStorage.removeItem("phone");
+        sessionStorage.removeItem("auth-token");
+        sessionStorage.removeItem("name");
+        sessionStorage.removeItem("email");
+        sessionStorage.removeItem("phone");
         sessionStorage.removeItem("doctorData");
         setIsLoggedIn(false);
         setUsername(false);
@@ -34,7 +34,7 @@ const Navbar = () => {
       setShowDropdown(!showDropdown);
     }
     useEffect(() => { 
-      const storedemail = localStorage.getItem("email");
+      const storedemail = sessionStorage.getItem("email");
 
       if (storedemail) {
             setIsLoggedIn(true);
