@@ -14,8 +14,8 @@ const Notification = ({ children }) => {
   // useEffect hook to perform side effects in the component
   useEffect(() => {
     // Retrieve stored username, doctor data, and appointment data from sessionStorage and localStorage
-    const storedUsername = sessionStorage.getItem('email');
-    const storedAppointmentData = JSON.parse(localStorage.getItem('appointmentData'));
+    const storedUsername = localStorage.getItem('email');
+    const storedAppointmentData = JSON.parse(sessionStorage.getItem('appointmentData'));
 
 
     // Set isLoggedIn state to true and update username if storedUsername exists

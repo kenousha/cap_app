@@ -13,18 +13,18 @@ const Navbar = () => {
     const handleClick = () => setClick(!click);
     
     const handleLogout = () => {
-        sessionStorage.removeItem("auth-token");
-        sessionStorage.removeItem("name");
-        sessionStorage.removeItem("email");
-        sessionStorage.removeItem("phone");
-        localStorage.removeItem("doctorData");
+        localStorage.removeItem("auth-token");
+        localStorage.removeItem("name");
+        localStorage.removeItem("email");
+        localStorage.removeItem("phone");
+        sessionStorage.removeItem("doctorData");
         setIsLoggedIn(false);
         setUsername(false);
    
-        for (let i = 0; i < localStorage.length; i++) {
-          const key = localStorage.key(i);
+        for (let i = 0; i < sessionStorage.length; i++) {
+          const key = sessionStorage.key(i);
           if (key.startsWith("reviewFormData_")) {
-            localStorage.removeItem(key);
+            sessionStorage.removeItem(key);
           }
         }
         setEmail(email);
@@ -34,13 +34,14 @@ const Navbar = () => {
       setShowDropdown(!showDropdown);
     }
     useEffect(() => { 
-      const storedemail = sessionStorage.getItem("email");
+      const storedemail = localStorage.getItem("email");
 
       if (storedemail) {
             setIsLoggedIn(true);
             setUsername(storedemail.split('@')[0]);
           }
         }, []);
+  
 
   return (
     <nav>

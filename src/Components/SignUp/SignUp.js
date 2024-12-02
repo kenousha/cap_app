@@ -39,11 +39,11 @@ const SignUp = () => {
 
         if (json.authtoken) {
        
-            sessionStorage.setItem("auth-token", json.authtoken);
-            sessionStorage.setItem("role", role);            
-            sessionStorage.setItem("name", name);
-            sessionStorage.setItem("phone", phone);
-            sessionStorage.setItem("email", email);
+            localStorage.setItem("auth-token", json.authtoken);
+            localStorage.setItem("role", role);            
+            localStorage.setItem("name", name);
+            localStorage.setItem("phone", phone);
+            localStorage.setItem("email", email);
             
             navigate("/");
             window.location.reload(); 

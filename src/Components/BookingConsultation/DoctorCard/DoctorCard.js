@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './DoctorCard.css';
 import svg from './/images/0.svg'; import svg1 from './/images/1.svg'; import svg2 from './/images/2.svg';
 import svg3 from './/images/3.svg'; import svg4 from './/images/4.svg'; import svg5 from './/images/5.svg';
@@ -10,29 +10,55 @@ import { v4 as uuidv4 } from 'uuid';
 
 const DoctorCard = ({ name, speciality, experience, ratings, profilePic, onSubmit }) => {
     const [showModal, setShowModal] = useState(false);
-    const [appointments, setAppointments] = useState([]);
+    const [appointments, setAppointments] = useState(() => {
+      const storedAppointments = sessionStorage.getItem('appointments');
+      return storedAppointments ? JSON.parse(storedAppointments) : [];
+    });
+
+    const [reloadNeeded, setReloadNeeded] = useState(false); 
+      
+    const [isBooked, setIsBooked] = useState(() => {
+      const storedAppointments = sessionStorage.getItem('appointments');
+      return storedAppointments ? JSON.parse(storedAppointments).length > 0 : false;
+    });
   
     const handleBooking = () => {
       setShowModal(true);
     };
   
     const handleCancel = (appointmentId) => {
-        localStorage.removeItem('appointmentData');
-
-      const updatedAppointments = appointments.filter((appointment) => appointment.id !== appointmentId);
-      setAppointments(updatedAppointments);
-      
-    };
-  
-    const handleFormSubmit = async (appointmentData) => {
-      const newAppointment = {
-        id: uuidv4(),
-        ...appointmentData,
+        sessionStorage.removeItem('appointmentData');
+        setAppointments((prev) => prev.filter((appt) => appt.id !== appointmentId));
+        setReloadNeeded(true);
       };
-      const updatedAppointments = [...appointments, newAppointment];
-      setAppointments(updatedAppointments);
-      setShowModal(false);
-    }  
+  
+    const handleFormSubmit = (appointmentData) => {
+        const newAppointment = { 
+            id: uuidv4(), 
+            ...appointmentData,
+            doctorName: name,
+         };
+        const updatedAppointments = [...appointments, newAppointment];
+        setAppointments(updatedAppointments);
+        setReloadNeeded(true);
+        setShowModal(false); 
+      };
+
+      const handlePopupClose = () => {
+        setShowModal(false);
+        if (reloadNeeded) {
+          setReloadNeeded(false); // Reset the reload flag
+          window.location.reload(); // Reload the page
+        }
+      };
+
+    useEffect(() => { 
+        sessionStorage.setItem('appointments', JSON.stringify(appointments));
+        setIsBooked(appointments.length > 0);
+      }, [appointments]);
+
+    const doctorAppointments = appointments.filter((appt) => appt.doctorName === name);
+
     const getDoctorImage = (name) => {
         switch (name) {
           case 'Dr. Jiao Yang': return svg1;    case 'Dr. Michael Smith': return svg1;
@@ -63,10 +89,10 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, onSubmi
       
       <div className="bc-dr-card-options-container">
        <Popup
-          style={{ backgroundColor: '#FFFFFF' }}
+          style={{ backgroundColor: '#FFFFFF' }} modal open={showModal}
           trigger={
-            <button className={`bc-book-appointment-btn ${appointments.length > 0 ? 'bc-cancel-appointment-btn' : ''}`}>
-              {appointments.length > 0 ? (
+            <button key={name} className={`bc-book-appointment-btn ${doctorAppointments.length > 0 ? 'bc-cancel-appointment-btn' : ''}`}>
+              {doctorAppointments.length > 0 ? (
                 <div>Cancel Appointment</div>
               ) : (
                 <div>Book Appointment</div>
@@ -74,14 +100,12 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, onSubmi
               <div>No Booking Fee</div>
             </button>
           }
-          modal
-          open={showModal}
-          onClose={() => setShowModal(false)}
+          onClose= {handlePopupClose}
         >
           {() => (
             <div className="bc-doctorbg" style={{height:'fit-content'}}>
-             <div>
-             <img style={{width:'200px', height:'170px'}} src={getDoctorImage(name)} alt="" />
+             <div style={{display: 'grid', placeItems: 'center'}}>
+             <img style={{width:'200px', height:'200px'}} src={getDoctorImage(name)} alt="" />
               <div style={{textAlign:'center'}}>
                 <div style={{fontWeight:'bold'}}>{name}</div>
                 <div>{speciality}</div>
@@ -89,7 +113,7 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, onSubmi
                 <div style={{fontWeight:'bold', marginBottom:'5px'}}>Ratings: {ratings}</div>
               </div>
              </div>
-              {appointments.length > 0 ? (
+              {doctorAppointments.length > 0 ? (
                 <>
                   <h3 style={{ textAlign: 'center'}}>Appointment Booked!</h3>
                   {appointments.map((appointment) => (

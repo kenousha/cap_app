@@ -12,7 +12,7 @@ function BookingConsultation () {
     const [isSearched, setIsSearched] = useState(false);
 
     const saveDoctorDataToLocalStorage = (data) => {
-        localStorage.setItem('doctorData', JSON.stringify(data));
+        sessionStorage.setItem('doctorData', JSON.stringify(data));
       };
     
     const handleSearch = (searchText) => {
@@ -61,7 +61,7 @@ function BookingConsultation () {
     useEffect(() => {
         const fetchDetails = async () => {
             try {
-                const authtoken = sessionStorage.getItem("auth-token");
+                const authtoken = localStorage.getItem("auth-token");
                 if (!authtoken) {
                     navigate("/Login");
                     return;

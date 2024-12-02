@@ -15,7 +15,7 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit, name, phone, 
         "doctorName": doctorName,
         "doctorSpeciality": doctorSpeciality,
       }
-      localStorage.setItem('appointmentData', JSON.stringify(appointmentData));
+      sessionStorage.setItem('appointmentData', JSON.stringify(appointmentData));
     };
   
     return (
